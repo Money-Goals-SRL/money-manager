@@ -54,9 +54,11 @@ We will follow a not so rigid workflow, following 5 steps:
 
 ### 07/03/2023 - To Do List
 
-1. Create the frontend with React
-2. Initialize backend app
-3. Start development of 50/30/20 calculator
+1. Create the frontend with React (done)
+2. Initialize backend app (done)
+3. Connect backend to frontend with concurrently (done)
+4. Development of basic header, body and footer (done)
+5. Start development of 50/30/20 calculator
 
 ## Work
 
@@ -64,9 +66,9 @@ We will follow a not so rigid workflow, following 5 steps:
 
 ### In progress
 
-### Planned
-
 #### Basic calculator: budgeting (50/30/20)
+
+### Planned
 
 #### Basic calculator: income and expenses
 

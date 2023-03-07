@@ -1,0 +1,25 @@
+{
+  "name": "money-manager",
+  "version": "1.0.0",
+  "description": "Let's try and create a complete money manager website from scratch, in which you can review your financial status and select your favourite investment type, choose your input and obtain a complete report (hope so) to review your investment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon backend/app.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Money-Goals-SRL/money-manager.git"
+  },
+  "author": "Leonardo Pinna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Money-Goals-SRL/money-manager/issues"
+  },
+  "homepage": "https://github.com/Money-Goals-SRL/money-manager#readme",
+  "dependencies": {
+    "concurrently": "7.6.0"
+  }
+}
