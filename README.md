@@ -97,3 +97,12 @@ We will follow a not so rigid workflow, following 5 steps:
 #### Retirement calculator
 
 #### Salary calculator: income, taxes and expenses
+
+## Log of content (IT)
+
+### 07/03/2023 - To Do List
+
+1. Create the frontend with React
+2. Initialize backend app
+3. Create render.com serverless connection
+4. Start development of 50/30/20 calculator
