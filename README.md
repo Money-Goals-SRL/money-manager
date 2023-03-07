@@ -50,6 +50,14 @@ We will follow a not so rigid workflow, following 5 steps:
 6. _Changes and Updates_: over time, the project could be reviewed, modified or even expanded!
 7. _Reference guide_ (not guaranteed): creation of a reference guide in .pdf format, which will include the used model, inputs and outputs of the model, the pros, cons and flaws explanation and a bacis guide on how to use the online calculator.
 
+## Log of content (IT)
+
+### 07/03/2023 - To Do List
+
+1. Create the frontend with React
+2. Initialize backend app
+3. Start development of 50/30/20 calculator
+
 ## Work
 
 ### Completed
@@ -97,12 +105,3 @@ We will follow a not so rigid workflow, following 5 steps:
 #### Retirement calculator
 
 #### Salary calculator: income, taxes and expenses
-
-## Log of content (IT)
-
-### 07/03/2023 - To Do List
-
-1. Create the frontend with React
-2. Initialize backend app
-3. Create render.com serverless connection
-4. Start development of 50/30/20 calculator
