@@ -1,0 +1,40 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+header {
+  background-color: rgb(255, 106, 0);
+  color: white;
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+}
+footer {
+  background-color: rgb(255, 106, 0);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  font-weight: bold;
+}
+.error-message {
+  color: red;
+}
+.page-body {
+  padding: 2em;
+}
+.home {
+}
+h1 {
+  text-align: center;
+}
+h3 {
+  color: black;
+}
+
+a {
+  margin: 1em;
+  color: white !important;
+  text-decoration: none;
+}
