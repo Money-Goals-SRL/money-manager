@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/Money-Goals-SRL/money-manager/static/js/main.59a4d4a0.js",
-    "index.html": "/Money-Goals-SRL/money-manager/index.html",
-    "main.59a4d4a0.js.map": "/Money-Goals-SRL/money-manager/static/js/main.59a4d4a0.js.map"
+    "main.js": "/money-manager/static/js/main.59a4d4a0.js",
+    "index.html": "/money-manager/index.html",
+    "main.59a4d4a0.js.map": "/money-manager/static/js/main.59a4d4a0.js.map"
   },
   "entrypoints": [
     "static/js/main.59a4d4a0.js"
