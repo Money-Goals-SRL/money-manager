@@ -8,7 +8,7 @@ function Home() {
       <p>Seleziona uno dei calcolatori a disposizione</p>
       <div>
         {" "}
-        <a href="/budget-50-30-20">
+        <a href="./budget-50-30-20">
           <h3>Budget 50/30/20</h3>
         </a>
       </div>
