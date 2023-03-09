@@ -7,7 +7,7 @@ function Header() {
       <div>
         <a href="./">Home</a>
         <a href="./profile">Profile</a>
-        <a href="./">Login</a>
+        <a href="./budget-50-30-20">Budget</a>
       </div>
     </header>
   );
