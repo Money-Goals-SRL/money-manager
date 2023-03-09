@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/Money-Goals-SRL/money-manager/issues"
   },
-  "homepage": "https://github.com/Money-Goals-SRL/money-manager",
+  "homepage": "https://money-goals-srl.github.io/money-manager",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
+    "serve": "^14.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
