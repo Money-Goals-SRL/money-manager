@@ -19,9 +19,10 @@ function Budget503020() {
   }
 
   function handleChange(event) {
-    event.preventDefault();
-    setValue(event.target.value);
+    const sanitizedInput = event.target.value.replace(/<[^>]*>/g, "");
+    setValue(sanitizedInput);
   }
+
   return (
     <div>
       <h3>Budget 50-30-20</h3>
