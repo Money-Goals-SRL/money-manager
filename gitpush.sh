@@ -12,4 +12,6 @@ git commit -m "$commitMessage"
 
 git push origin main
 
+npm run deploy
+
 read
