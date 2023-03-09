@@ -13,8 +13,8 @@ const routerBaseName = process.env.PUBLIC_URL;
 const router = createBrowserRouter(
   [
     { path: "/", element: <App body=<Home /> />, children: [] },
-    { path: "/profile", element: <App body=<Profile /> /> },
-    { path: "/budget-50-30-20", element: <App body=<Budget503020 /> /> },
+    { path: "profile", element: <App body=<Profile /> /> },
+    { path: "budget-50-30-20", element: <App body=<Budget503020 /> /> },
     { path: "*", element: <App /> },
   ],
   { basename: routerBaseName }
