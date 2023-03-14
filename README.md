@@ -6,6 +6,13 @@ You can follow the live building of the project here: https://twitch.com/leopinn
 
 ## Overview
 
+### Note (Italian)
+
+#### Package.json changes
+
+Prod: homepage: "https://money-goals-srl.github.io/money-manager"
+Dev: homepage: "./"
+
 ### Project Goals
 
 Here is a list of our goals :)

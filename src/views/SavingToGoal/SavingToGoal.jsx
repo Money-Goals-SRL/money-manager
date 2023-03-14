@@ -19,16 +19,19 @@ function SavingToGoal() {
     } else {
       setSavings(savingValue);
       setTarget(targetValue);
-      setMonths(
-        Math.ceil(
-          (parseFloat(targetValue) % (parseFloat(savingValue) * 12)) /
-            parseFloat(savingValue)
-        )
-      );
       setYears(
         Math.floor(parseFloat(targetValue) / (parseFloat(savingValue) * 12))
       );
-      console.log(savings, target);
+      if (parseFloat(savingValue) > parseFloat(targetValue)) {
+        setMonths(0);
+      } else {
+        setMonths(
+          Math.ceil(
+            (parseFloat(targetValue) % (parseFloat(savingValue) * 12)) /
+              parseFloat(savingValue)
+          )
+        );
+      }
     }
   }
 
@@ -78,7 +81,7 @@ function SavingToGoal() {
               per raggiungere la somma di {parseFloat(target).toFixed(2)} €, ci
               impiegherai{" "}
               {years === 0 && months === 0
-                ? "meno di un mese!"
+                ? "meno di un mese"
                 : years === 0
                 ? ""
                 : years === 1
