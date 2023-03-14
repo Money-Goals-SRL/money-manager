@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/money-manager/static/js/main.f4aba0ea.js",
+    "main.js": "/money-manager/static/js/main.1b6f3c7d.js",
     "index.html": "/money-manager/index.html",
-    "main.f4aba0ea.js.map": "/money-manager/static/js/main.f4aba0ea.js.map"
+    "main.1b6f3c7d.js.map": "/money-manager/static/js/main.1b6f3c7d.js.map"
   },
   "entrypoints": [
-    "static/js/main.f4aba0ea.js"
+    "static/js/main.1b6f3c7d.js"
   ]
 }
