@@ -98,6 +98,10 @@ function SavingToGoal() {
           <p className="error-message">{msg}</p>
         ) : null}
       </div>
+      <p style={{ color: "green", fontWeight: "bold" }}>
+        NOTA: Aggiungere un calcolo dell'età finale, a partire dall'età attuale
+        e da quanto capitale hai ora a disposizione.
+      </p>
     </div>
   );
 }
