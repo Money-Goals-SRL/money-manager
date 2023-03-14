@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import sanitizeInput from "../../Utilities/sanitizeInput";
 
 function Budget503020() {
   var [value, setValue] = useState("");
+  var [savings, setSavings] = useState("");
   var [expenses, setExpenses] = useState("");
   var [invest, setInvest] = useState("");
   var [fun, setFun] = useState("");
@@ -12,6 +14,7 @@ function Budget503020() {
     if (value <= 0) {
       setMsg("Non hai inserito un risparmio mensile valido!");
     } else {
+      setSavings(value);
       setExpenses(parseFloat(value) * 0.5);
       setInvest(parseFloat(value) * 0.3);
       setFun(parseFloat(value) * 0.2);
@@ -19,8 +22,7 @@ function Budget503020() {
   }
 
   function handleChange(event) {
-    const sanitizedInput = event.target.value.replace(/<[^>]*>/g, "");
-    setValue(sanitizedInput);
+    setValue(sanitizeInput(event.target.value));
   }
 
   return (
@@ -45,7 +47,7 @@ function Budget503020() {
         {expenses && invest && fun ? (
           <div>
             <p>
-              Con un risparmio di {parseFloat(value).toFixed(2)} €, devi avere
+              Con un risparmio di {parseFloat(savings).toFixed(2)} €, devi avere
               come budget di spesa {expenses.toFixed(2)} €, come budget per gli
               investimenti {invest.toFixed(2)} € e come budget per il tuo
               divertimento puoi usare {fun.toFixed(2)} €.

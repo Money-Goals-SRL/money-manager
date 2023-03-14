@@ -11,6 +11,9 @@ function Home() {
         <a href="./budget-50-30-20">
           <h3>Budget 50/30/20</h3>
         </a>
+        <a href="./saving-to-goal">
+          <h3>Rispamio per Target</h3>
+        </a>
       </div>
     </div>
   );

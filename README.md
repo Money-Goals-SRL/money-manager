@@ -60,19 +60,21 @@ We will follow a not so rigid workflow, following 5 steps:
 4. Development of basic header, body and footer (done)
 5. Start development of 50/30/20 calculator
 
+### 14/03/2023
+
 ## Work
 
 ### Completed
 
+#### Basic calculator: budgeting (50/30/20)
+
 ### In progress
 
-#### Basic calculator: budgeting (50/30/20)
+#### Basic calculator: saving rate to goal
 
 ### Planned
 
 #### Basic calculator: income and expenses
-
-#### Basic calculator: saving rate to goal
 
 #### Basic calculator: 4% rule
 

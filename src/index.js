@@ -6,6 +6,7 @@ import App from "./App";
 import Budget503020 from "./views/Budget503020/Budget503020";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
+import SavingToGoal from "./views/SavingToGoal/SavingToGoal";
 
 // Per usare il client-side routing su GitHub, questa riga è necessaria perchè fornisce il basename di partenza del router.
 const routerBaseName = process.env.PUBLIC_URL;
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     { path: "/", element: <App body=<Home /> />, children: [] },
     { path: "profile", element: <App body=<Profile /> /> },
     { path: "budget-50-30-20", element: <App body=<Budget503020 /> /> },
+    { path: "saving-to-goal", element: <App body=<SavingToGoal /> /> },
     { path: "*", element: <App /> },
   ],
   { basename: routerBaseName }
