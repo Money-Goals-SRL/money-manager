@@ -12,7 +12,10 @@ function Home() {
           <h3>Budget 50/30/20</h3>
         </a>
         <a href="./saving-to-goal">
-          <h3>Rispamio per Target</h3>
+          <h3>Tempo per Target</h3>
+        </a>
+        <a href="./irr">
+          <h3>Internal Rate of Return</h3>
         </a>
       </div>
     </div>

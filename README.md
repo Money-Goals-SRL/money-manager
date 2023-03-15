@@ -69,23 +69,29 @@ We will follow a not so rigid workflow, following 5 steps:
 
 ### 14/03/2023
 
+Developed the "Time to target" calculator
+
+### 15/03/2023
+
+Developed the "Internal Rate of Return" calculator
+
 ## Work
 
 ### Completed
 
 #### Basic calculator: budgeting (50/30/20)
 
+#### Basic calculator: saving rate to goal
+
 ### In progress
 
-#### Basic calculator: saving rate to goal
+#### Basic calculator: internal rate of return
 
 ### Planned
 
 #### Basic calculator: income and expenses
 
 #### Basic calculator: 4% rule
-
-#### Basic calculator: internal rate of return
 
 #### Basic calculator: compound interest
 
