@@ -25,6 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prodDeploy": "PUBLIC_URL=https://money-goals-srl.github.io/money-manager npm run deploy",
+    "devUrl": "PUBLIC_URL=http://localhost:3000/ npm start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
