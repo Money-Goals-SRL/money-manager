@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "https://money-goals-srl.github.io/money-manager/static/js/main.5c93c591.js",
-    "index.html": "https://money-goals-srl.github.io/money-manager/index.html",
-    "main.5c93c591.js.map": "https://money-goals-srl.github.io/money-manager/static/js/main.5c93c591.js.map"
+    "main.js": "/money-manager/static/js/main.1b6f3c7d.js",
+    "index.html": "/money-manager/index.html",
+    "main.1b6f3c7d.js.map": "/money-manager/static/js/main.1b6f3c7d.js.map"
   },
   "entrypoints": [
-    "static/js/main.5c93c591.js"
+    "static/js/main.1b6f3c7d.js"
   ]
 }
