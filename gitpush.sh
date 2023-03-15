@@ -12,7 +12,7 @@ git commit -m "$commitMessage"
 
 git push origin main
 
-npm run prodDeploy
+npm run deploy
 
-npm run devUrl
+npm run devDeploy
 
