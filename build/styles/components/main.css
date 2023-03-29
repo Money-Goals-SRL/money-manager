@@ -48,10 +48,5 @@ a {
 
 .pdf-view {
   height: 100vh;
-  width: 100vw;
-  overflow: auto;
-}
-.document-version {
-  font-style: italic;
-  font-size: small;
+  width: 100%;
 }

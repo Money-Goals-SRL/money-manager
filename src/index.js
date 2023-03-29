@@ -9,10 +9,9 @@ import Profile from "./views/Profile/Profile";
 import SavingToGoal from "./views/SavingToGoal/SavingToGoal";
 import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
 import NotFound from "./views/NotFound/NotFound";
-import PDFViewer from "./views/PDFs/PDFs";
-const termsConditions = "./docs/termini-condizioni.pdf";
-const privacyPolicy = "./docs/privacy.pdf";
-const disclaimer = "./docs/disclaimer.pdf";
+import TermConditions from "./views/Documents/TermConditions";
+import Privacy from "./views/Documents/Privacy";
+import Disclaimer from "./views/Documents/Disclaimer";
 
 // Per usare il client-side routing su GitHub, questa riga è necessaria perchè fornisce il basename di partenza del router.
 const routerBaseName = process.env.PUBLIC_URL;
@@ -26,19 +25,15 @@ const router = createBrowserRouter(
     { path: "irr", element: <App body=<InternalRateReturn /> /> },
     {
       path: "terms-and-conditions",
-      element: <PDFViewer pdfLink={termsConditions} />,
+      element: <App body=<TermConditions /> />,
     },
     {
       path: "privacy",
-      element: <PDFViewer pdfLink={privacyPolicy} />,
+      element: <App body=<Privacy /> />,
     },
     {
       path: "disclaimer",
-      element: <PDFViewer pdfLink={disclaimer} />,
-    },
-    {
-      path: "cookies",
-      element: <PDFViewer pdfLink={privacyPolicy} />,
+      element: <App body=<Disclaimer /> />,
     },
     { path: "*", element: <App body=<NotFound /> /> },
   ],

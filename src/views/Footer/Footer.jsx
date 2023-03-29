@@ -13,10 +13,7 @@ function Footer() {
             Disclaimer
           </a>
           <a href="./privacy" className="footer-link">
-            Privacy Policy
-          </a>
-          <a href="./cookies" className="footer-link">
-            Cookies
+            Privacy e Cookies
           </a>
           <a href="./terms-and-conditions" className="footer-link">
             Termini e Condizioni

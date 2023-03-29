@@ -1,19 +1,46 @@
 import React from "react";
 
 function Header() {
+  function handleMenu() {
+    var menu = document.getElementById("navbar-menu");
+    var logo = document.getElementById("logo-container");
+    var navbar = document.getElementById("header-navbar");
+
+    if (menu.classList.contains("opened-menu")) {
+      // Closing the menu
+      logo.classList.remove("hidden");
+      menu.classList.remove("opened-menu");
+      navbar.classList.remove("opened-navbar");
+    } else {
+      // Opening the menu
+      logo.classList.add("hidden");
+      menu.classList.add("opened-menu");
+      navbar.classList.add("opened-navbar");
+    }
+  }
+
   return (
     <header>
-      <a href="./">LOGO</a>
-      <div className="header-navbar">
-        <a href="./" className="header-link">
-          Home
-        </a>
-        <a href="./profile" className="header-link">
-          Profile
-        </a>
-        <a href="./budget-50-30-20" className="header-link">
-          Budget
-        </a>
+      <a href="./" className="logo-container" id="logo-container">
+        LOGO
+      </a>
+      <div className="header-navbar" id="header-navbar">
+        <div className="hamburger-div" id="hamburger-div">
+          <img
+            src="./images/hamburger-icon.png"
+            alt="hamburger-icon"
+            className="hamburger"
+            onClick={handleMenu}
+          />
+        </div>
+        <div className="navbar-menu" id="navbar-menu">
+          <a className="navbar-element" href="./">
+            Home
+          </a>
+          <a className="navbar-element" href="./terms-and-conditions">
+            T&Cs
+          </a>
+        </div>
       </div>
     </header>
   );
