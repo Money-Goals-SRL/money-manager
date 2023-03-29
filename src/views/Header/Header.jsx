@@ -3,11 +3,17 @@ import React from "react";
 function Header() {
   return (
     <header>
-      <div>LOGO</div>
-      <div>
-        <a href="./">Home</a>
-        <a href="./profile">Profile</a>
-        <a href="./budget-50-30-20">Budget</a>
+      <a href="./">LOGO</a>
+      <div className="header-navbar">
+        <a href="./" className="header-link">
+          Home
+        </a>
+        <a href="./profile" className="header-link">
+          Profile
+        </a>
+        <a href="./budget-50-30-20" className="header-link">
+          Budget
+        </a>
       </div>
     </header>
   );

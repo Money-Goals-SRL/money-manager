@@ -8,11 +8,19 @@ function Footer() {
       {" "}
       <Sponsor />
       <footer>
-        <div>
-          <a href="./disclaimer">Disclaimer</a>
-          <a href="./privacy">Privacy Policy</a>
-          <a href="./cookies">Cookies</a>
-          <a href="./terms-and-conditions">Termini e Condizioni</a>
+        <div className="footer-navbar">
+          <a href="./disclaimer" className="footer-link">
+            Disclaimer
+          </a>
+          <a href="./privacy" className="footer-link">
+            Privacy Policy
+          </a>
+          <a href="./cookies" className="footer-link">
+            Cookies
+          </a>
+          <a href="./terms-and-conditions" className="footer-link">
+            Termini e Condizioni
+          </a>
         </div>
         <div>
           <p className="copyright">
