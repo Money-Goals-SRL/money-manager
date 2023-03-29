@@ -8,6 +8,12 @@ import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
 import SavingToGoal from "./views/SavingToGoal/SavingToGoal";
 import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
+import NotFound from "./views/NotFound/NotFound";
+import PDFViewer from "./views/PDFs/PDFs";
+const termsConditions = "./docs/termini-condizioni.pdf";
+const privacyPolicy = "./docs/privacy.pdf";
+const disclaimer = "./docs/disclaimer.pdf";
+
 // Per usare il client-side routing su GitHub, questa riga è necessaria perchè fornisce il basename di partenza del router.
 const routerBaseName = process.env.PUBLIC_URL;
 
@@ -18,7 +24,23 @@ const router = createBrowserRouter(
     { path: "budget-50-30-20", element: <App body=<Budget503020 /> /> },
     { path: "saving-to-goal", element: <App body=<SavingToGoal /> /> },
     { path: "irr", element: <App body=<InternalRateReturn /> /> },
-    { path: "*", element: <App /> },
+    {
+      path: "terms-and-conditions",
+      element: <PDFViewer pdfLink={termsConditions} />,
+    },
+    {
+      path: "privacy",
+      element: <PDFViewer pdfLink={privacyPolicy} />,
+    },
+    {
+      path: "disclaimer",
+      element: <PDFViewer pdfLink={disclaimer} />,
+    },
+    {
+      path: "cookies",
+      element: <PDFViewer pdfLink={privacyPolicy} />,
+    },
+    { path: "*", element: <App body=<NotFound /> /> },
   ],
   { basename: routerBaseName }
 );

@@ -6,16 +6,22 @@ function Home() {
       <h1>Money Manager</h1>
 
       <p>Seleziona uno dei calcolatori a disposizione</p>
-      <div>
+      <div className="home-menu">
         {" "}
         <a href="./budget-50-30-20">
-          <h3>Budget 50/30/20</h3>
+          <div className="home-link">
+            <h3>Budget 50/30/20</h3>{" "}
+          </div>
         </a>
         <a href="./saving-to-goal">
-          <h3>Tempo per Target</h3>
+          <div className="home-link">
+            <h3>Tempo per Target</h3>{" "}
+          </div>
         </a>
         <a href="./irr">
-          <h3>Internal Rate of Return</h3>
+          <div className="home-link">
+            <h3>Internal Rate of Return</h3>{" "}
+          </div>
         </a>
       </div>
     </div>

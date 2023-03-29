@@ -1,6 +1,9 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
 header {
   background-color: rgb(255, 106, 0);
@@ -11,10 +14,12 @@ header {
   justify-content: space-between;
   font-weight: bold;
 }
+button {
+  cursor: pointer;
+}
 footer {
   background-color: rgb(255, 106, 0);
   color: white;
-  padding: 1em;
   text-align: center;
   font-weight: bold;
 }
@@ -26,15 +31,89 @@ footer {
 }
 .home {
 }
+.home-menu {
+}
+.home-menu a {
+  padding: 1em;
+  margin: 0.5em 1em;
+}
+.home-link {
+  width: 300px;
+  transition: 0.4s;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.home-link:hover {
+  background-color: rgb(255, 106, 0);
+  transition: 0.4s;
+}
+
+.home-link:hover h3 {
+  color: white !important;
+}
 h1 {
   text-align: center;
 }
 h3 {
   color: black;
+  margin: 0;
+}
+
+.chart {
+  width: 50%;
+  height: 400px;
 }
 
 a {
   margin: 1em;
   color: white !important;
   text-decoration: none;
+}
+.sponsor-title {
+  text-align: center;
+  margin: auto;
+}
+.sponsor-div {
+  margin: 1em auto 1em;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center stretch;
+}
+.sponsor-banner {
+  margin: 1em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out;
+  box-shadow: none;
+}
+
+.sponsor-banner img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  align-self: center;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.sponsor-banner:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+footer div {
+  padding: 2em;
+}
+.copyright {
+  margin: 0;
+}
+
+.pdf-view {
+  height: 100vh;
+  width: 100%;
 }

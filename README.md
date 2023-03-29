@@ -59,14 +59,6 @@ We will follow a not so rigid workflow, following 5 steps:
 
 ## Log of content (IT)
 
-### 07/03/2023 - To Do List
-
-1. Create the frontend with React (done)
-2. Initialize backend app (done)
-3. Connect backend to frontend with concurrently (done)
-4. Development of basic header, body and footer (done)
-5. Start development of 50/30/20 calculator
-
 ### 14/03/2023
 
 Developed the "Time to target" calculator
@@ -74,6 +66,12 @@ Developed the "Time to target" calculator
 ### 15/03/2023
 
 Developed the "Internal Rate of Return" calculator
+
+### 28/03/2023
+
+Added sponsor banner.
+Added T&C, cookies and privacy policies.
+Budget 50-30-20 now shows a basic donught chart.
 
 ## Work
 

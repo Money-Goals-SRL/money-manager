@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
+import Budget503020Results from "./Budget503020Results";
 
 function Budget503020() {
   var [value, setValue] = useState("");
@@ -45,14 +46,12 @@ function Budget503020() {
         </form>
         <br />
         {expenses && invest && fun ? (
-          <div>
-            <p>
-              Con un risparmio di {parseFloat(savings).toFixed(2)} €, devi avere
-              come budget di spesa {expenses.toFixed(2)} €, come budget per gli
-              investimenti {invest.toFixed(2)} € e come budget per il tuo
-              divertimento puoi usare {fun.toFixed(2)} €.
-            </p>
-          </div>
+          <Budget503020Results
+            savings={savings}
+            expenses={expenses}
+            invest={invest}
+            fun={fun}
+          />
         ) : msg ? (
           <p className="error-message">{msg}</p>
         ) : null}

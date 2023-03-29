@@ -15,7 +15,6 @@ function InternalRateReturn() {
 
   function calcIRR(event) {
     event.preventDefault();
-    console.log(cashflows);
     setIrr(IRR(cashflows));
   }
 
@@ -65,7 +64,7 @@ function InternalRateReturn() {
           <button onClick={calcIRR}>Calcola IRR</button>
         </form>
         <br />
-        {irr ? (
+        {irr || irr === 0 ? (
           <div>
             <p>
               Il tasso interno di rendimento è pari allo{" "}
