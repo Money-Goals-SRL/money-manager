@@ -1,0 +1,52 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+button {
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+}
+.page-body {
+  padding: 1em;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .page-body {
+    padding: 2em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .page-body {
+    padding: 2em;
+  }
+}
+h1 {
+  text-align: center;
+}
+h3 {
+  color: black;
+  margin: 0;
+}
+
+.chart {
+  width: 50%;
+  height: 400px;
+}
+
+a {
+  margin: 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.pdf-view {
+  height: 100vh;
+  width: 100%;
+}
