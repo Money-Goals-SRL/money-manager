@@ -2,14 +2,14 @@ import React from "react";
 
 function Sponsor() {
   return (
-    <>
+    <div className="sponsor">
       <div className="sponsor-title">
         <h4>Sponsor del sito web</h4>
       </div>
       <div className="sponsor-div">
         <a
           href="http://bit.ly/DEGIRO_LP"
-          target="_BLANK"
+          target="_blank"
           rel="nofollow noreferrer"
           className="sponsor-banner"
         >
@@ -34,7 +34,7 @@ function Sponsor() {
 
         <a
           href="https://bit.ly/InteractiveBrokers-LP"
-          target="_Top"
+          target="_blank"
           rel="noreferrer nofollow"
           className="sponsor-banner"
         >
@@ -44,7 +44,7 @@ function Sponsor() {
         </a>
         <a
           href="https://bit.ly/Trading212_LP"
-          target="_BLANK"
+          target="_blank"
           rel="nofollow noreferrer"
           className="sponsor-banner"
         >
@@ -57,7 +57,7 @@ function Sponsor() {
           </div>
         </a>
       </div>
-    </>
+    </div>
   );
 }
 
