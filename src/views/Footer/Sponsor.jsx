@@ -14,11 +14,7 @@ function Sponsor() {
           className="sponsor-banner"
         >
           <div className="sponsor-single-box">
-            <img
-              src="./images/degiro-logo.png"
-              border="0"
-              alt="degiro-banner"
-            />
+            <img src="/images/degiro-logo.png" border="0" alt="degiro-banner" />
           </div>
         </a>
         <a
@@ -28,18 +24,18 @@ function Sponsor() {
           className="sponsor-banner"
         >
           <div className="sponsor-single-box">
-            <img border="0" src="./images/xtb-logo.png" alt="xtb-banner" />
+            <img border="0" src="/images/xtb-logo.png" alt="xtb-banner" />
           </div>
         </a>
 
         <a
-          href="https://bit.ly/InteractiveBrokers-LP"
+          href="https://bit.ly/InteractiveBrokers-LeoP"
           target="_blank"
           rel="noreferrer nofollow"
           className="sponsor-banner"
         >
           <div className="sponsor-single-box">
-            <img border="0" src="./images/ib-logo.png" alt="ib-banner" />
+            <img border="0" src="/images/ib-logo.png" alt="ib-banner" />
           </div>
         </a>
         <a
@@ -50,7 +46,7 @@ function Sponsor() {
         >
           <div className="sponsor-single-box">
             <img
-              src="./images/trading212-logo.png"
+              src="/images/trading212-logo.png"
               border="0"
               alt="trading212-banner"
             />

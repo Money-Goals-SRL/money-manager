@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
 import Budget503020Results from "./Budget503020Results";
+import Input from "../Components/Input";
 
 function Budget503020() {
   var [value, setValue] = useState("");
@@ -35,14 +36,14 @@ function Budget503020() {
       </p>
       <div>
         <form>
-          <label htmlFor="saving">Inserisci il tuo risparmio mensile: </label>
-          <input
-            value={value}
+          <Input
             name="saving"
+            label="Risparmio mensile"
             placeholder="es. 1000"
-            onChange={handleChange}
-          ></input>{" "}
-          € <button onClick={calcBudget}>Calcola</button>
+            function={handleChange}
+            postLabel="€"
+          />
+          <button onClick={calcBudget}>Calcola</button>
         </form>
         <br />
         {expenses && invest && fun ? (

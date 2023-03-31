@@ -4,10 +4,70 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
+  text-align: justify;
 }
 
 button {
   cursor: pointer;
+}
+label {
+  display: block;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pre-label,
+input,
+select {
+  width: 250px;
+}
+.pre-label {
+  margin: 0.5em 0;
+  font-weight: bold;
+  color: #333;
+  box-sizing: border-box;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.input-container input {
+}
+input,
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border: 1px solid #000;
+  outline: none;
+}
+.post-label {
+  margin: auto 0.5em;
+}
+button {
+  background-color: rgb(255, 106, 0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(215, 91, 2);
+}
+
+button,
+label {
+  margin: 0.5em;
 }
 
 .error-message {

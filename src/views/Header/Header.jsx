@@ -22,7 +22,8 @@ function Header() {
   return (
     <header>
       <a href="./" className="logo-container" id="logo-container">
-        LOGO
+        <img src="./images/favicon.png" alt="logo"></img>
+        <h2 id="name">MONEY MANAGER</h2>
       </a>
       <div className="header-navbar" id="header-navbar">
         <div className="hamburger-div" id="hamburger-div">

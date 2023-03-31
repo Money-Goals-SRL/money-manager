@@ -52,25 +52,29 @@ function SavingToGoal() {
       </p>
       <div>
         <form>
-          <label htmlFor="saving">Inserisci il tuo risparmio mensile: </label>
-          <input
-            value={savingValue}
-            name="saving"
-            placeholder="es. 100"
-            onChange={handleChange}
-          ></input>{" "}
-          €
-          <br />
-          <label htmlFor="amount">
-            Inserisci il tuo target da raggiungere:{" "}
-          </label>
-          <input
-            value={targetValue}
-            name="amount"
-            placeholder="es. 1000"
-            onChange={handleChange}
-          ></input>{" "}
-          €<br />
+          {" "}
+          <div className="label-div">
+            <label htmlFor="saving">Inserisci il tuo risparmio mensile: </label>
+            <input
+              value={savingValue}
+              name="saving"
+              placeholder="es. 100"
+              onChange={handleChange}
+            ></input>{" "}
+            €
+          </div>
+          <div className="label-div">
+            <label htmlFor="amount">
+              Inserisci il tuo target da raggiungere:{" "}
+            </label>
+            <input
+              value={targetValue}
+              name="amount"
+              placeholder="es. 1000"
+              onChange={handleChange}
+            ></input>{" "}
+            €
+          </div>
           <button onClick={calcTime}>Calcola</button>
         </form>
         <br />

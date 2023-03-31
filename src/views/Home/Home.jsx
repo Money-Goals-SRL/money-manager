@@ -16,9 +16,11 @@ function Home() {
           <a href="./saving-to-goal" className="home-link">
             <h3>Tempo per Target</h3>
           </a>
-
           <a href="./irr" className="home-link">
             <h3>Internal Rate of Return</h3>
+          </a>
+          <a href="./compound-interest" className="home-link">
+            <h3>Interesse Composto</h3>
           </a>
         </div>
         <div className="home-menu">

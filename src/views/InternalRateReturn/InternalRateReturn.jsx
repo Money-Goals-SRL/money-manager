@@ -39,28 +39,30 @@ function InternalRateReturn() {
       <div>
         <form>
           <p>Inserisci i flussi di cassa: </p>
-          {cashflows.map((cf, i) => {
-            return (
-              <>
-                <label htmlFor={"date" + i}>Data: </label>
-                <input
-                  value={cf.date}
-                  name={"date" + i}
-                  placeholder="yyyy-mm-gg"
-                  onChange={(event) => handleChange(i, event)}
-                ></input>{" "}
-                <label htmlFor={"value" + i}>Importo: </label>
-                <input
-                  value={cf.value}
-                  name={"value" + i}
-                  placeholder="es. 1000"
-                  onChange={(event) => handleChange(i, event)}
-                ></input>{" "}
-                €<br />
-              </>
-            );
-          })}
-          <button onClick={addField}>Aggiungi movimento</button>
+          <div style={{ margin: "1em 0" }}>
+            {cashflows.map((cf, i) => {
+              return (
+                <div className="label-div">
+                  <label htmlFor={"date" + i}>Data: </label>
+                  <input
+                    value={cf.date}
+                    name={"date" + i}
+                    placeholder="yyyy-mm-gg"
+                    onChange={(event) => handleChange(i, event)}
+                  ></input>{" "}
+                  <label htmlFor={"value" + i}>Importo: </label>
+                  <input
+                    value={cf.value}
+                    name={"value" + i}
+                    placeholder="es. 1000"
+                    onChange={(event) => handleChange(i, event)}
+                  ></input>{" "}
+                  €
+                </div>
+              );
+            })}
+            <button onClick={addField}>Aggiungi movimento</button>
+          </div>
           <button onClick={calcIRR}>Calcola IRR</button>
         </form>
         <br />
