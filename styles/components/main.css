@@ -34,6 +34,9 @@ select {
 }
 .input-container input {
 }
+.irr-movement {
+  display: flex;
+}
 input,
 select {
   padding: 10px;
