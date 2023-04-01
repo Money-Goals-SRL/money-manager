@@ -81,19 +81,19 @@ Budget 50-30-20 now shows a basic donught chart.
 
 #### Basic calculator: saving rate to goal
 
-### In progress
+#### Basic calculator: compound interest
 
 #### Basic calculator: internal rate of return
 
-#### Basic calculator: compound interest
+### In progress
+
+#### Debt repayment
 
 ### Planned
 
 #### Basic calculator: income and expenses
 
 #### Basic calculator: 4% rule
-
-#### Debt repayment
 
 #### Stock investing: accumulation plan
 

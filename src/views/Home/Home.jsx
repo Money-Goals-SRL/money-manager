@@ -22,6 +22,9 @@ function Home() {
           <a href="./compound-interest" className="home-link">
             <h3>Interesse Composto</h3>
           </a>
+          <a href="./mortgage" className="home-link">
+            <h3>Simulatore Mutuo</h3>
+          </a>
         </div>
         <div className="home-menu">
           <div className="home-welcome">

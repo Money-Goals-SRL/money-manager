@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
-import CompoundInterestResults from "./CompoundInterestResults";
 import Input from "../Components/Input";
 
 function CompoundInterest() {
@@ -104,7 +103,7 @@ function CompoundInterest() {
           />{" "}
           <Input
             name="rate"
-            label="Rate"
+            label="Tasso di Interesse"
             value={data.rate || ""}
             placeholder="es. 5 = 5%"
             function={handleChange}

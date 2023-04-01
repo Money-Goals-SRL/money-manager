@@ -19,6 +19,7 @@ function Input(props) {
           name={props.name}
           placeholder={props.placeholder}
           onChange={props.function}
+          type={props.type}
         ></input>
         <p className="post-label">{props.postLabel}</p>
       </div>

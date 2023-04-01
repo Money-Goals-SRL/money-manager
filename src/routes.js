@@ -9,6 +9,7 @@ import SavingToGoal from "./views/SavingToGoal/SavingToGoal";
 import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
 import NotFound from "./views/NotFound/NotFound";
 import CompoundInterest from "./views/CompoundInterest/CompoundInterest";
+import Mortgage from "./views/Mortgage/Mortgage";
 
 import TermConditions from "./views/Documents/TermConditions";
 import Privacy from "./views/Documents/Privacy";
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
     { path: "saving-to-goal", element: <App body=<SavingToGoal /> /> },
     { path: "irr", element: <App body=<InternalRateReturn /> /> },
     { path: "compound-interest", element: <App body=<CompoundInterest /> /> },
+    { path: "mortgage", element: <App body=<Mortgage /> /> },
     {
       path: "terms-and-conditions",
       element: <App body=<TermConditions /> />,
