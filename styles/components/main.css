@@ -69,7 +69,33 @@ button,
 label {
   margin: 0.5em;
 }
+.summary-table {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+  text-align: center;
+  font-size: 1em;
+  overflow-x: scroll;
+}
+.summary-table .head,
+.summary-table .body {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+}
+.summary-table .head div,
+.summary-table .body div {
+  width: calc(100% / 5);
+  min-width: 150px;
+  margin: 0;
+  padding: 0.5em;
+  border: 1px solid black;
+}
 
+.summary-table .head div {
+  background-color: rgb(255, 106, 0);
+  color: white;
+}
 .error-message {
   color: red;
 }
