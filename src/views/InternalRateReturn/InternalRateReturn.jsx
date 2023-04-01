@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
-import IRR from "../../Utilities/irr";
+import { irr } from "financial";
+import Input from "../Components/Input";
 
 function InternalRateReturn() {
   var [cashflows, setCashflows] = useState([{ date: "", value: "" }]);
-  var [irr, setIrr] = useState("");
+  var [irrValue, setIrrValue] = useState("");
   var [msg, setMsg] = useState("");
 
   function addField(event) {
@@ -13,9 +14,80 @@ function InternalRateReturn() {
     setCashflows([...cashflows, newField]);
   }
 
+  function irrCalculation(cashflows) {
+    console.log(cashflows);
+    const dates = cashflows.map((cf) => new Date(cf.date));
+    const values = cashflows.map((cf) => cf.value);
+
+    // Set an initial guess rate
+    let guess = 0.1;
+
+    // Define a maximum number of iterations to avoid infinite loops
+    const maxIterations = 100;
+
+    // Define a threshold for considering the IRR converged
+    const epsilon = 0.00001;
+
+    let iteration = 0;
+    let npv = 0;
+    let prevNpv;
+    do {
+      prevNpv = npv;
+      npv = 0;
+      for (let i = 0; i < cashflows.length; i++) {
+        const years = (dates[i] - dates[0]) / (1000 * 60 * 60 * 24 * 365);
+        npv += values[i] / Math.pow(1 + guess, years);
+      }
+
+      if (Math.abs(npv) < epsilon) {
+        return guess;
+      }
+
+      guess = guess - npv / derivative(values, guess, dates);
+
+      iteration++;
+      console.log(guess);
+
+      if (iteration > maxIterations) {
+        throw new Error("IRR did not converge");
+      }
+    } while (Math.abs(npv - prevNpv) > epsilon);
+    return guess;
+  }
+
+  function derivative(values, guess, dates) {
+    const h = 0.00001;
+    const f1 = npv(values, guess + h, dates);
+    const f2 = npv(values, guess - h, dates);
+    return (f1 - f2) / (2 * h);
+  }
+
+  function npv(values, rate, dates) {
+    let result = 0;
+    for (let i = 0; i < values.length; i++) {
+      const years = (dates[i] - dates[0]) / (1000 * 60 * 60 * 24 * 365);
+      result += values[i] / Math.pow(1 + rate, years);
+    }
+    return result;
+  }
+
   function calcIRR(event) {
     event.preventDefault();
-    setIrr(IRR(cashflows));
+
+    // Cashflow input validation to correct empty dates (set as of today)
+    const cashflowsWithDates = cashflows.map((cf, i) => {
+      if (!cf.date) {
+        cashflows[i].date = new Date().getUTCDate();
+        console.log("sono qui");
+        setCashflows(cashflows);
+      }
+      return {
+        date: new Date(cf.date),
+        value: cf.value,
+      };
+    });
+    const irr = irrCalculation(cashflowsWithDates);
+    setIrrValue(irr);
   }
 
   function handleChange(i, event) {
@@ -42,22 +114,25 @@ function InternalRateReturn() {
           <div style={{ margin: "1em 0" }}>
             {cashflows.map((cf, i) => {
               return (
-                <div className="label-div">
-                  <label htmlFor={"date" + i}>Data: </label>
-                  <input
-                    value={cf.date}
+                <div className="irr-movement">
+                  <Input
                     name={"date" + i}
+                    label="Data"
+                    value={cf.date}
                     placeholder="yyyy-mm-gg"
-                    onChange={(event) => handleChange(i, event)}
-                  ></input>{" "}
-                  <label htmlFor={"value" + i}>Importo: </label>
-                  <input
-                    value={cf.value}
+                    function={(event) => handleChange(i, event)}
+                    type="date"
+                    postLabel=""
+                  />
+                  <Input
                     name={"value" + i}
+                    label="Importo"
+                    value={cf.value}
                     placeholder="es. 1000"
-                    onChange={(event) => handleChange(i, event)}
-                  ></input>{" "}
-                  €
+                    function={(event) => handleChange(i, event)}
+                    type="number"
+                    postLabel="€"
+                  />
                 </div>
               );
             })}
@@ -66,11 +141,11 @@ function InternalRateReturn() {
           <button onClick={calcIRR}>Calcola IRR</button>
         </form>
         <br />
-        {irr || irr === 0 ? (
+        {irrValue || irrValue === 0 ? (
           <div>
             <p>
               Il tasso interno di rendimento è pari allo{" "}
-              {(irr * 100).toFixed(2)} %.
+              {(irrValue * 100).toFixed(2)} %.
             </p>
           </div>
         ) : msg ? (

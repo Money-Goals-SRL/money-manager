@@ -97,7 +97,10 @@ function Mortgage() {
       cagr = 0;
     } else {
       cagr =
-        (((payment * months) / principal) ** ((1 / months) * 12) - 1) * 100;
+        (((payment * months) / principal) **
+          ((1 / months) * (data.frequency === "month" ? 12 : 1)) -
+          1) *
+        100;
     }
     const totalAmount = payment * months;
     const totalInterest = payment * months - principal;

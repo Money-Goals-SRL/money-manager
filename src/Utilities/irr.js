@@ -17,6 +17,7 @@ function IRR(cashflow) {
     if (a.date < b.date) return -1;
     else return 1;
   });
+  console.log(cashflow);
   cashflow.forEach((cf, i) => {
     cf.value = parseFloat(cf.value);
   });
