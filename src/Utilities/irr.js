@@ -17,7 +17,6 @@ function IRR(cashflow) {
     if (a.date < b.date) return -1;
     else return 1;
   });
-  console.log(cashflow);
   cashflow.forEach((cf, i) => {
     cf.value = parseFloat(cf.value);
   });
@@ -61,17 +60,17 @@ function IRR(cashflow) {
   var upperbound = 100;
   var lowerbound = -100;
   var tolerance = 0.0001;
-
+  var trials = 100;
   var irr;
-  var NPV;
+  var NPV = 1;
 
-  do {
-    const date0 = new Date(cashflow[0].date);
+  while (Math.abs(NPV) > tolerance && trials > 0) {
+    const date0 = cashflow[0].date;
     NPV = 0;
     irr = (upperbound + lowerbound) / 2;
     for (var i = 0; i < cashflow.length; i++) {
       var cf = cashflow[i].value;
-      var date = new Date(cashflow[i].date);
+      var date = cashflow[i].date;
       var t = (date - date0) / (1000 * 60 * 60 * 24) / 365;
       NPV += cf / Math.pow(1 + irr, t);
     }
@@ -80,7 +79,10 @@ function IRR(cashflow) {
     } else if (NPV < 0) {
       upperbound = irr;
     }
-  } while (Math.abs(NPV) > tolerance);
+    console.log(NPV);
+
+    trials--;
+  }
 
   if (c_0 > 0) {
     return -irr;
@@ -88,4 +90,5 @@ function IRR(cashflow) {
     return +irr;
   }
 }
+
 export default IRR;

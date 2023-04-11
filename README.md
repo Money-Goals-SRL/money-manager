@@ -73,6 +73,14 @@ Added sponsor banner.
 Added T&C, cookies and privacy policies.
 Budget 50-30-20 now shows a basic donught chart.
 
+### 30/03/2023
+
+Added compound interest calculator
+
+### 31/03/2023
+
+Added mortgage calculator
+
 ## Work
 
 ### Completed
@@ -85,9 +93,11 @@ Budget 50-30-20 now shows a basic donught chart.
 
 #### Basic calculator: internal rate of return
 
+#### Debt repayment: Mortage (French)
+
 ### In progress
 
-#### Debt repayment
+#### Real estate: rental property
 
 ### Planned
 
@@ -108,8 +118,6 @@ Budget 50-30-20 now shows a basic donught chart.
 #### Stock valuation: historical data
 
 #### Portfolio manager: results and projections
-
-#### Real estate: rental property
 
 #### Real estate: house flipping
 

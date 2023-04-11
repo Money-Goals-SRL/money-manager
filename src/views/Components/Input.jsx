@@ -20,6 +20,7 @@ function Input(props) {
           placeholder={props.placeholder}
           onChange={props.function}
           type={props.type}
+          disabled={props.disabled ? props.disabled : false}
         ></input>
         <p className="post-label">{props.postLabel}</p>
       </div>

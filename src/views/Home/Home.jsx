@@ -24,6 +24,9 @@ function Home() {
           </a>
           <a href="./mortgage" className="home-link">
             <h3>Simulatore Mutuo</h3>
+          </a>{" "}
+          <a href="./rental" className="home-link">
+            <h3>Rendimento da Affitto</h3>
           </a>
         </div>
         <div className="home-menu">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
 import Input from "../Components/Input";
+import IRR from "../../Utilities/irr";
 
 function Mortgage() {
   // showResults: boolean value to manage the table on screen, if true results are shown.
@@ -12,6 +13,8 @@ function Mortgage() {
     rate: "",
     frequency: "month",
     years: "",
+    repaidPrincipal: "",
+    // =SE(RESTO([@Mese];12)=1;SE([@Mese]>12;SE(Input!$F$29>P3;0;Input!$F$29);0);0)
   });
   var [results, setResults] = useState({
     payment: "",
@@ -32,6 +35,21 @@ function Mortgage() {
     event.preventDefault();
     setShowResults(false);
   }
+
+  function calcPayment(r, n, C) {
+    // r: interest rate; n: number of periods; C: debt outstanding
+    // function returns p: payment per period
+    var p = 0;
+    if ((r === 0 && n === 0) || n === 0) {
+      p = 0;
+    } else if (r === 0) {
+      p = C / n;
+    } else {
+      p = C * ((r * (1 + r) ** n) / ((1 + r) ** n - 1));
+    }
+    return p;
+  }
+
   function calculate(event) {
     // Return the results object with data to be shown on the page
     event.preventDefault();
@@ -52,6 +70,8 @@ function Mortgage() {
       months = months / 12;
     }
     rate = rate / 100;
+    var repaidPrincipal = parseFloat(data.repaidPrincipal) || 0;
+    console.log(repaidPrincipal);
 
     // Monthly payment calculation
     var payment = 0;
@@ -73,38 +93,54 @@ function Mortgage() {
     var array = [];
 
     // Creation of the results table arrays
-    for (var i = 0; i < months; i++) {
-      array.push(i + 1);
-      paymentsArr.push(payment);
-      if (i === 0) {
-        interestArr.push(principal * rate);
-      } else {
-        interestArr.push(outstandingDebtArr[i - 1] * rate);
-      }
-      principalArr.push(payment - interestArr[i]);
-      if (i === 0) {
-        outstandingDebtArr.push(principal - principalArr[i]);
-      } else {
-        outstandingDebtArr.push(
-          Math.abs(outstandingDebtArr[i - 1] - principalArr[i])
+    // First element
+    payment = calcPayment(rate, months, principal);
+    paymentsArr[0] = payment;
+    interestArr[0] = principal * rate;
+    principalArr[0] = payment - interestArr[0];
+    outstandingDebtArr[0] = principal - principalArr[0];
+    array[0] = 1;
+
+    for (var i = 1; i < months; i++) {
+      if (i % 12 === 0) {
+        payment = calcPayment(
+          rate,
+          months - i,
+          outstandingDebtArr[Math.max(0, i - 1 - (i % 12))]
         );
       }
+      paymentsArr.push(payment);
+      interestArr.push(outstandingDebtArr[i - 1] * rate);
+      principalArr[i] =
+        payment - interestArr[i] + ((i + 1) % 12 === 0 ? repaidPrincipal : 0);
+
+      outstandingDebtArr.push(
+        Math.max(0, outstandingDebtArr[i - 1] - principalArr[i])
+      );
+      array.push(i + 1);
     }
 
     // Other results object calculations
-    var cagr;
-    if (principal === 0) {
-      cagr = 0;
-    } else {
-      cagr =
-        (((payment * months) / principal) **
-          ((1 / months) * (data.frequency === "month" ? 12 : 1)) -
-          1) *
-        100;
-    }
-    const totalAmount = payment * months;
-    const totalInterest = payment * months - principal;
-    const interestPercentage = ((payment * months) / principal - 1) * 100 || 0;
+    const totalAmount = principal + interestArr.reduce((a, b) => a + b, 0);
+    const totalInterest = interestArr.reduce((a, b) => a + b, 0);
+    const interestPercentage = (totalInterest / principal) * 100 || 0;
+    var currentYear = new Date().getFullYear();
+    var cf = [];
+    paymentsArr.forEach((pm, i) => {
+      if (i === 0) {
+        cf.push({ date: new Date(currentYear, i, 1), value: -principal });
+      } else {
+        console.log(repaidPrincipal);
+        cf.push({
+          date: new Date(currentYear, i + 1, 1),
+          value: (i + 1) % 12 === 0 ? pm + repaidPrincipal : pm,
+        });
+      }
+    });
+    console.log(cf);
+    const cagr = principal === 0 ? 0 : IRR(cf) * 100;
+    console.log(cagr);
+    // ((totalAmount / principal) ** (1 / data.years) - 1) * 100;
 
     // Results object assignment
     setResults({
@@ -181,6 +217,15 @@ function Mortgage() {
               </select>
             </div>
           </label>
+          <Input
+            name="repaidPrincipal"
+            label="Principale Restituito"
+            value={data.repaidPrincipal || ""}
+            placeholder="es. 2000"
+            function={handleChange}
+            postLabel="€/anno"
+            type="number"
+          />
           <button onClick={calculate}>Calcola</button>
           <button onClick={reset}>Cancella</button>
         </form>
@@ -216,7 +261,7 @@ function Mortgage() {
                   return (
                     <div className="body">
                       <div>{i + 1}</div>
-                      <div>{results.payment.toFixed(2)} €</div>
+                      <div>{results.paymentsArr[i].toFixed(2)} €</div>
                       <div>{results.principalArr[i].toFixed(2)} €</div>
                       <div>{results.interestArr[i].toFixed(2)} €</div>
                       <div>{results.outstandingDebtArr[i].toFixed(2)} €</div>
