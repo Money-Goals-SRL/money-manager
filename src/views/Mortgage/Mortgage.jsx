@@ -106,13 +106,19 @@ function Mortgage() {
         payment = calcPayment(
           rate,
           months - i,
-          outstandingDebtArr[Math.max(0, i - 1 - (i % 12))]
+          outstandingDebtArr[i - 1 - (i % 12)]
         );
       }
       paymentsArr.push(payment);
       interestArr.push(outstandingDebtArr[i - 1] * rate);
-      principalArr[i] =
-        payment - interestArr[i] + ((i + 1) % 12 === 0 ? repaidPrincipal : 0);
+      if ((i + 1) % 12 === 0) {
+        if (repaidPrincipal >= outstandingDebtArr[i - 1]) {
+          repaidPrincipal = outstandingDebtArr[i - 1];
+        }
+        principalArr.push(payment - interestArr[i] + repaidPrincipal);
+      } else {
+        principalArr.push(payment - interestArr[i]);
+      }
 
       outstandingDebtArr.push(
         Math.max(0, outstandingDebtArr[i - 1] - principalArr[i])
