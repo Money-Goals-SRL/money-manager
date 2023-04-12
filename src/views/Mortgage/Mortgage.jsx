@@ -247,7 +247,7 @@ function Mortgage() {
                 <div>CAGR</div>
               </div>
               <div className="body">
-                <div>{results.payment.toFixed(2)} €</div>
+                <div>{results.paymentsArr[0].toFixed(2)} €</div>
                 <div>{results.totalAmount.toFixed(2)} €</div>
                 <div>{results.totalInterest.toFixed(2)} €</div>
                 <div>{results.interestPercentage.toFixed(2)} %</div>
