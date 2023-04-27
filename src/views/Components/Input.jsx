@@ -21,6 +21,7 @@ function Input(props) {
           onChange={props.function}
           type={props.type}
           disabled={props.disabled ? props.disabled : false}
+          step={props.step ? props.step : null}
         ></input>
         <p className="post-label">{props.postLabel}</p>
       </div>

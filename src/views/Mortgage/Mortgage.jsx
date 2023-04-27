@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import sanitizeInput from "../../Utilities/sanitizeInput";
 import Input from "../Components/Input";
 import IRR from "../../Utilities/irr";
+import MortgageResults from "./MortgageResults";
 
 function Mortgage() {
   // showResults: boolean value to manage the table on screen, if true results are shown.
@@ -25,7 +26,9 @@ function Mortgage() {
     cagr: "",
     paymentsArr: "",
     interestArr: "",
+    totalInterestArr: "",
     principalArr: "",
+    principalArrAux: "",
     outstandingDebtArr: "",
   });
   var [msg, setMsg] = useState("");
@@ -88,7 +91,9 @@ function Mortgage() {
     // Initialization of results table arrays
     var paymentsArr = [];
     var interestArr = [];
+    var totalInterestArr = [];
     var principalArr = [];
+    var principalArrAux = [];
     var outstandingDebtArr = [];
     var array = [];
 
@@ -97,7 +102,9 @@ function Mortgage() {
     payment = calcPayment(rate, months, principal);
     paymentsArr[0] = payment;
     interestArr[0] = principal * rate;
+    totalInterestArr[0] = interestArr[0];
     principalArr[0] = payment - interestArr[0];
+    principalArrAux[0] = payment - interestArr[0];
     outstandingDebtArr[0] = principal - principalArr[0];
     array[0] = 1;
 
@@ -111,6 +118,7 @@ function Mortgage() {
       }
       paymentsArr.push(payment);
       interestArr.push(outstandingDebtArr[i - 1] * rate);
+      totalInterestArr.push(totalInterestArr[i - 1] + interestArr[i]);
       if ((i + 1) % 12 === 0) {
         if (repaidPrincipal >= outstandingDebtArr[i - 1]) {
           repaidPrincipal = outstandingDebtArr[i - 1];
@@ -119,7 +127,7 @@ function Mortgage() {
       } else {
         principalArr.push(payment - interestArr[i]);
       }
-
+      principalArrAux.push(payment - interestArr[i]);
       outstandingDebtArr.push(
         Math.max(0, outstandingDebtArr[i - 1] - principalArr[i])
       );
@@ -143,16 +151,16 @@ function Mortgage() {
         });
       }
     });
-    console.log(cf);
     const cagr = principal === 0 ? 0 : IRR(cf) * 100;
-    console.log(cagr);
     // ((totalAmount / principal) ** (1 / data.years) - 1) * 100;
-
+    console.log(totalInterestArr);
     // Results object assignment
     setResults({
       paymentsArr: paymentsArr,
       interestArr: interestArr,
+      totalInterestArr: totalInterestArr,
       principalArr: principalArr,
+      principalArrAux: principalArrAux,
       outstandingDebtArr: outstandingDebtArr,
       totalAmount: totalAmount,
       payment: payment,
@@ -202,6 +210,7 @@ function Mortgage() {
             function={handleChange}
             postLabel="%"
             type="number"
+            step=".01"
           />
           <Input
             name="years"
@@ -238,6 +247,14 @@ function Mortgage() {
         <br />
         {showResults && (
           <>
+            <MortgageResults
+              payments={results.paymentsArr}
+              principals={results.principalArrAux}
+              interests={results.interestArr}
+              debts={results.outstandingDebtArr}
+              totalInterests={results.totalInterestArr}
+            />
+            <div className="mortgageChart"></div>
             <div className="summary-table">
               <div className="head">
                 <div>Rata del Mutuo</div>
