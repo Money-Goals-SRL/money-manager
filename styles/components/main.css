@@ -17,11 +17,14 @@ label {
 }
 .inputs-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .inputs-block {
   border: 1px solid black;
   margin: 0.5em;
   padding: 0.5em;
+  width: 450px;
 }
 .pre-label,
 input,
