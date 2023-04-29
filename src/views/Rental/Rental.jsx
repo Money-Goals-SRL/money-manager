@@ -5,22 +5,21 @@ import Input from "../Components/Input";
 function Rental() {
   var [showResults, setShowResults] = useState(false);
   var [data, setData] = useState({
-    principal: "",
+    buyPrice: "",
+    tax: "",
+    agency: "",
+    otherCosts: "",
+    downPayment: "",
     rate: "",
     frequency: "month",
     years: "",
   });
   var [results, setResults] = useState({
-    payment: "",
-    principal: "",
-    totalAmount: "",
-    totalInterest: "",
-    interestPercentage: "",
-    cagr: "",
-    paymentsArr: "",
-    interestArr: "",
-    principalArr: "",
-    outstandingDebtArr: "",
+    totalInitialCost: "",
+    realEstateValue: "",
+    inFlow: "",
+    outFlow: "",
+    netCashflow: "",
   });
   var [msg, setMsg] = useState("");
 
@@ -28,9 +27,11 @@ function Rental() {
     const checkbox = document.getElementsByName("useMortgage")[0];
     const rateInput = document.getElementsByName("rate")[0];
     const yearsInput = document.getElementsByName("years")[0];
+    const downPayment = document.getElementsByName("downPayment")[0];
 
     rateInput.disabled = checkbox.checked;
     yearsInput.disabled = checkbox.checked;
+    downPayment.disabled = checkbox.checked;
   }
 
   function reset(event) {
@@ -38,13 +39,34 @@ function Rental() {
     event.preventDefault();
     setShowResults(false);
   }
+  function calcPayment(r, n, C) {
+    // r: interest rate; n: number of periods; C: debt outstanding
+    // function returns p: payment per period
+    var p = 0;
+    if ((r === 0 && n === 0) || n === 0) {
+      p = 0;
+    } else if (r === 0) {
+      p = C / n;
+    } else {
+      p = C * ((r * (1 + r) ** n) / ((1 + r) ** n - 1));
+    }
+    return p;
+  }
+
   function calculate(event) {
     // Return the results object with data to be shown on the page
     event.preventDefault();
     setShowResults(true);
 
-    // Input validation and data type control
-    var principal = parseFloat(data.principal) || 0;
+    // VALIDAZIONE DEGLI INPUT
+    // Input Acquisto immobile
+    var buyPrice = parseFloat(data.buyPrice) || 0;
+    var tax = parseFloat(data.tax) || 0;
+    var agency = parseFloat(data.agency) || 0;
+    var otherCosts = parseFloat(data.otherCosts) || 0;
+    // Input Finanziamento operazione
+    var downPayment = parseFloat(data.downPayment) || 0;
+    var principal = buyPrice - downPayment;
     var months = parseFloat(data.years) * 12 || 0;
     if (months === 0) {
       // Imposto il valore di default pari a 10 anni
@@ -58,6 +80,15 @@ function Rental() {
       months = months / 12;
     }
     rate = rate / 100;
+    // Input Reddito Immobile
+    var grossRent = data.grossIncome || 0;
+    var incomeTax = ((data.incomeTax || 0) * grossRent) / 100;
+    var propertyTax = ((data.propertyTax || 0) * grossRent) / 100;
+    var appreciation = (data.appreciation || 0) / 100;
+
+    // GESTIONE DEI DATI E CALCOLI INTERMEDI
+    // Acquisto iniziale dell'immobile
+    let totalInitialCost = buyPrice + tax + agency + otherCosts;
 
     // Monthly payment calculation
     var payment = 0;
@@ -71,16 +102,44 @@ function Rental() {
         ((rate * (1 + rate) ** months) / ((1 + rate) ** months - 1));
     }
 
+    // Reddito immobile
+    var netRent = grossRent - incomeTax - propertyTax;
+    var initialYield = (netRent / downPayment) * 100 * 12;
+
+    // CREAZIONE DEGLI ARRAY DEI RISULTATI
     // Initialization of results table arrays
+    // Debito
     var paymentsArr = [];
     var interestArr = [];
+    var totalInterestArr = [];
     var principalArr = [];
+    var principalArrAux = [];
     var outstandingDebtArr = [];
+    // Affitto
+    var equityArr = [];
+    var currentYieldArr = [];
+    var homeValueArr = [];
+    var incomeArr = [];
+    // Helpers
     var array = [];
 
+    // First elements of array
+    payment = calcPayment(rate, months, principal);
+    paymentsArr[0] = payment;
+    interestArr[0] = principal * rate;
+    totalInterestArr[0] = interestArr[0];
+    principalArr[0] = payment - interestArr[0];
+    principalArrAux[0] = payment - interestArr[0];
+    outstandingDebtArr[0] = principal;
+    equityArr[0] = downPayment;
+    currentYieldArr[0] = initialYield;
+    homeValueArr[0] = buyPrice;
+    incomeArr[0] = netRent - interestArr[0];
+    array[0] = 0;
+
     // Creation of the results table arrays
-    for (var i = 0; i < months; i++) {
-      array.push(i + 1);
+    for (var i = 1; i < months + 1; i++) {
+      array.push(i);
       paymentsArr.push(payment);
       if (i === 0) {
         interestArr.push(principal * rate);
@@ -95,6 +154,10 @@ function Rental() {
           Math.abs(outstandingDebtArr[i - 1] - principalArr[i])
         );
       }
+      homeValueArr.push(homeValueArr[i - 1] * (1 + appreciation / 12));
+      equityArr.push(homeValueArr[i] - outstandingDebtArr[i]);
+      incomeArr.push(netRent - interestArr[i]);
+      currentYieldArr.push((incomeArr[i] / equityArr[i]) * 100 * 12);
     }
 
     // Other results object calculations
@@ -112,8 +175,14 @@ function Rental() {
     const totalInterest = payment * months - principal;
     const interestPercentage = ((payment * months) / principal - 1) * 100 || 0;
 
+    // New parameters
+
     // Results object assignment
     setResults({
+      homeValueArr: homeValueArr,
+      equityArr: equityArr,
+      totalInitialCost: totalInitialCost,
+      currentYieldArr: currentYieldArr,
       paymentsArr: paymentsArr,
       interestArr: interestArr,
       principalArr: principalArr,
@@ -152,7 +221,7 @@ function Rental() {
             <div className="inputs-block">
               <h4>Acquisto Immobile</h4>
               <Input
-                name="buy-cost"
+                name="buyPrice"
                 label="Costo d'Acquisto"
                 value={data.buyPrice || ""}
                 placeholder="es. 1000"
@@ -200,7 +269,7 @@ function Rental() {
                 type="number"
               />
               <label
-                for="useMortgage"
+                htmlFor="useMortgage"
                 style={{ display: "flex", margin: "1em 0.5em" }}
               >
                 <b>Non mi serve il Mutuo</b>
@@ -254,10 +323,19 @@ function Rental() {
               <Input
                 name="propertyTax"
                 label="Imposte sull'Immobile"
-                value={data.years || ""}
+                value={data.propertyTax || ""}
                 placeholder="es. 2,5"
                 function={handleChange}
                 postLabel="%"
+                type="number"
+              />
+              <Input
+                name="appreciation"
+                label="Apprezzamento Immobile"
+                value={data.appreciation || ""}
+                placeholder="es. 1.00"
+                function={handleChange}
+                postLabel="% / Anno"
                 type="number"
               />
             </div>
@@ -268,39 +346,29 @@ function Rental() {
         <br />
         {showResults && (
           <>
+            <div style={{ color: "red" }}>
+              <h3 style={{ color: "red" }}>
+                ATTENZIONE: Calcolatore in costruzione, i risultati potrebbero
+                essere sbagliati. Scrivimi su YouTube se vuoi segnalare un bug
+              </h3>
+            </div>{" "}
             <div className="summary-table">
               <div className="head">
-                <div>Rata del Mutuo</div>
-                <div>Costo Totale</div>
-                <div>Interessi Totali</div>
-                <div>Interessi %</div>
-                <div>CAGR</div>
-              </div>
-              <div className="body">
-                <div>{results.payment.toFixed(2)} €</div>
-                <div>{results.totalAmount.toFixed(2)} €</div>
-                <div>{results.totalInterest.toFixed(2)} €</div>
-                <div>{results.interestPercentage.toFixed(2)} %</div>
-                <div>{results.cagr.toFixed(2)} %</div>
-              </div>
-            </div>
-            <div className="summary-table">
-              <div className="head">
-                <div>{results.frequency === "month" ? "Mese" : "Anno"}</div>
-                <div>Importo Rata</div>
-                <div>Principale</div>
-                <div>Interessi</div>
-                <div>Debito Residuo</div>
+                <div>Anno</div>
+                <div>Valore Immobile</div>
+                <div>Debito</div>
+                <div>Equity</div>
+                <div>ROE</div>
               </div>
               <div>
-                {results.paymentsArr.map((n, i) => {
+                {results.homeValueArr.map((n, i) => {
                   return (
                     <div className="body">
-                      <div>{i + 1}</div>
-                      <div>{results.payment.toFixed(2)} €</div>
-                      <div>{results.principalArr[i].toFixed(2)} €</div>
-                      <div>{results.interestArr[i].toFixed(2)} €</div>
+                      <div>{i}</div>
+                      <div>{results.homeValueArr[i].toFixed(2)} €</div>
                       <div>{results.outstandingDebtArr[i].toFixed(2)} €</div>
+                      <div>{results.equityArr[i].toFixed(2)} €</div>
+                      <div>{results.currentYieldArr[i].toFixed(2)} %</div>
                     </div>
                   );
                 })}

@@ -28,10 +28,10 @@ const router = createBrowserRouter(
     { path: "irr", element: <App body=<InternalRateReturn /> /> },
     { path: "compound-interest", element: <App body=<CompoundInterest /> /> },
     { path: "mortgage", element: <App body=<Mortgage /> /> },
-    // {
-    //   path: "rental",
-    //   element: <App body=<Rental /> />,
-    // },
+    {
+      path: "rental",
+      element: <App body=<Rental /> />,
+    },
     {
       path: "terms-and-conditions",
       element: <App body=<TermConditions /> />,

@@ -74,7 +74,6 @@ function Mortgage() {
     }
     rate = rate / 100;
     var repaidPrincipal = parseFloat(data.repaidPrincipal) || 0;
-    console.log(repaidPrincipal);
 
     // Monthly payment calculation
     var payment = 0;
@@ -144,7 +143,6 @@ function Mortgage() {
       if (i === 0) {
         cf.push({ date: new Date(currentYear, i, 1), value: -principal });
       } else {
-        console.log(repaidPrincipal);
         cf.push({
           date: new Date(currentYear, i + 1, 1),
           value: (i + 1) % 12 === 0 ? pm + repaidPrincipal : pm,
@@ -152,8 +150,7 @@ function Mortgage() {
       }
     });
     const cagr = principal === 0 ? 0 : IRR(cf) * 100;
-    // ((totalAmount / principal) ** (1 / data.years) - 1) * 100;
-    console.log(totalInterestArr);
+
     // Results object assignment
     setResults({
       paymentsArr: paymentsArr,
