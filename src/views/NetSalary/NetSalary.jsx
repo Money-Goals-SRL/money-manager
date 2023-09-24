@@ -212,18 +212,18 @@ function NetSalary() {
               <div className="head">
                 <div>RAL</div>
                 <div>Netto Annuo</div>
-                <div>Netto Mensile</div>
                 <div>Contributi INPS</div>
                 <div>IRPEF e Addizionali</div>
                 <div>Detrazioni Lavoro Dipendente</div>
+                <div>Netto Mensile</div>
               </div>
               <div className="body">
                 <div>{results.grossYearlyIncome} €</div>
                 <div>{results.netYearlyIncome.toFixed(2)} €</div>
-                <div>{results.netMonthlyIncome.toFixed(2)} €</div>
                 <div>{results.pension.toFixed(2)} €</div>
                 <div>{results.taxes.toFixed(2)} €</div>
                 <div>{results.deduction.toFixed(2)} €</div>
+                <div>{results.totalNetYearlyIncome.toFixed(2)} €</div>
               </div>
             </div>
           </>
