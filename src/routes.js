@@ -10,6 +10,7 @@ import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
 import NotFound from "./views/NotFound/NotFound";
 import CompoundInterest from "./views/CompoundInterest/CompoundInterest";
 import Mortgage from "./views/Mortgage/Mortgage";
+import NetSalary from "./views/NetSalary/NetSalary";
 import Rental from "./views/Rental/Rental";
 
 import TermConditions from "./views/Documents/TermConditions";
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
     { path: "irr", element: <App body=<InternalRateReturn /> /> },
     { path: "compound-interest", element: <App body=<CompoundInterest /> /> },
     { path: "mortgage", element: <App body=<Mortgage /> /> },
+    { path: "net-salary", element: <App body=<NetSalary /> /> },
     {
       path: "rental",
       element: <App body=<Rental /> />,

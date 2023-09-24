@@ -24,7 +24,10 @@ function Home() {
           </a>
           <a href="./mortgage" className="home-link">
             <h3>Simulatore Mutuo</h3>
-          </a>{" "}
+          </a>
+          <a href="./net-salary" className="home-link">
+            <h3>Calcola Stipendio Netto</h3>
+          </a>
           <a href="./rental" className="home-link">
             <h3>Rendimento da Affitto</h3>
           </a>
