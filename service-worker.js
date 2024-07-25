@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/money-manager/precache-manifest.1b9440a95a41126d622f6a1b7046567d.js"
+  "/money-manager/precache-manifest.b2ecad63cd15e2323ef6699e4f02e79f.js"
 );
 
 self.addEventListener('message', (event) => {
