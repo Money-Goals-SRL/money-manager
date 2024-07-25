@@ -16,6 +16,7 @@ import Rental from "./views/Rental/Rental";
 import TermConditions from "./views/Documents/TermConditions";
 import Privacy from "./views/Documents/Privacy";
 import Disclaimer from "./views/Documents/Disclaimer";
+import ConversionLength from "./views/Conversion/Length/Conversion";
 
 // Per usare il client-side routing su GitHub, questa riga è necessaria perchè fornisce il basename di partenza del router.
 const routerBaseName = process.env.PUBLIC_URL;
@@ -32,6 +33,10 @@ const routes: RouteObject[] = [
 	{
 		path: "rental",
 		element: <App body={<Rental />} />,
+	},
+	{
+		path: "conversion/length",
+		element: <App body={<ConversionLength />} />,
 	},
 	{
 		path: "terms-and-conditions",

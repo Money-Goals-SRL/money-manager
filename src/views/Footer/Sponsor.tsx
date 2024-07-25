@@ -9,7 +9,7 @@ function SponsorBlock(props: SponsorElement) {
 	return (
 		<a href={props.link} target="_blank" rel="nofollow noreferrer" className="sponsor-banner">
 			<div className="sponsor-single-box">
-				<img src={"./images/" + props.name + "-logo.png"} alt={props.name + "-banner"} />
+				<img src={"/images/" + props.name + "-logo.png"} alt={props.name + "-banner"} />
 			</div>
 		</a>
 	);
@@ -40,11 +40,7 @@ function Sponsor() {
 			<div className="sponsor-title">
 				<h4>Sponsor del sito web</h4>
 			</div>
-			<div className="sponsor-div">
-				{sponsorList.map((sponsor) => (
-                    SponsorBlock(sponsor)
-                ))}
-			</div>
+			<div className="sponsor-div">{sponsorList.map((sponsor) => SponsorBlock(sponsor))}</div>
 		</div>
 	);
 }

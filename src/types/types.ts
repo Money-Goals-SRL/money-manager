@@ -87,18 +87,31 @@ export type RentalResult = {
 export type SalaryData = {
 	grossYearlyIncome: number;
 	paymentsPerYear: number;
-	regionalTax: number;
-	comunalTax: number;
+	region: string;
+	comunalTaxRate: number;
 };
 
 export type SalaryResults = {
 	grossYearlyIncome: number;
-	pension: number;
-	taxes: number;
+	pensionCost: number;
+	taxableIncome: number;
+	irpefTax: number;
+	regionalTax: number;
+	comunalTax: number;
+	totalGrossTax: number;
+	deductions: number;
+	totalNetTax: number;
 	netYearlyIncome: number;
+	months: number;
 	grossMonthlyIncome: number;
 	netMonthlyIncome: number;
-	deduction: number;
-	totalNetYearlyIncome: number;
 	netMargin: number;
+	costRate: number;
+};
+
+export type ConversionLengthData = {
+	unitFrom: string;
+	valueFrom: string;
+	unitTo: string;
+	valueTo: string;
 };

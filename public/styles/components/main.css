@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 body {
   padding: 0;
   margin: 0;
@@ -5,6 +7,7 @@ body {
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
   text-align: justify;
+  background-color: #c8d6d8;
 }
 
 button {
@@ -65,7 +68,7 @@ input:focus {
   margin: auto 0.5em;
 }
 button {
-  background-color: rgb(255, 106, 0);
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -76,7 +79,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(215, 91, 2);
+  background-color: var(--hover-color);
 }
 
 button,
@@ -107,7 +110,7 @@ label {
 }
 
 .summary-table .head div {
-  background-color: rgb(255, 106, 0);
+  background-color:var(--primary-color);
   color: white;
 }
 .error-message {
@@ -155,3 +158,37 @@ a {
   font-style: italic;
   font-size: small;
 }
+
+
+.net-salary-table {
+    display: flex;
+    flex-direction: column;
+    margin: 1em auto;
+    text-align: center;
+    font-size: 1em;
+    overflow-x: scroll;
+  }
+  .net-salary-table .pair {
+    display: flex;
+    flex-direction: row;
+  }
+  .net-salary-table .head,
+  .net-salary-table .body {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+  .net-salary-table .head,
+  .net-salary-table .body {
+    width: calc(100% / 5);
+    min-width: 150px;
+    margin: 0;
+    padding: 0.5em;
+    border: 1px solid black;
+  }
+
+  
+  .net-salary-table .head {
+    background-color: var(--primary-color);
+    color: white;
+  }

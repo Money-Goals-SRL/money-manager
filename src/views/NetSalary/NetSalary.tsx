@@ -3,13 +3,13 @@ import sanitizeInput from "../../Utilities/sanitizeInput";
 import Input from "../Components/Input";
 // import NetSalaryResults from "./NetSalaryResults";
 import type { SalaryData, SalaryResults } from "../../types/types";
+import regionData, { irpefEchelons, type Echelon } from "./data";
 
 function NetSalary() {
 	var [showResults, setShowResults] = useState(false);
-
 	var [data, setData] = useState({ paymentsPerYear: 12 } as SalaryData);
-
 	var [results, setResults] = useState({} as SalaryResults);
+	var [msg, setMsg] = useState("");
 
 	// var [msg, setMsg] = useState("");
 
@@ -19,63 +19,26 @@ function NetSalary() {
 		setShowResults(false);
 	}
 
-	type Echelon = {
-		constant?: number;
-		minVal: number;
-		maxVal: number;
-		percentage: number;
-	};
-
-	const irpefEchelons: Echelon[] = [
+	const resultTableData = [
+		{ text: "Salario Lordo Annuo", value: results.grossYearlyIncome?.toFixed(2), symbol: "€" },
+		{ text: "Costo Previdenziale", value: results.pensionCost?.toFixed(2), symbol: "€" },
+		{ text: "Imponibile", value: results.taxableIncome?.toFixed(2), symbol: "€" },
+		{ text: "IRPEF", value: results.irpefTax?.toFixed(2), symbol: "€" },
+		{ text: "Addizionale Regionale", value: results.regionalTax?.toFixed(2), symbol: "€" },
+		{ text: "Addizionale Comunale", value: results.comunalTax?.toFixed(2), symbol: "€" },
+		{ text: "Imposta Totale Lorda", value: results.totalGrossTax?.toFixed(2), symbol: "€" },
+		{ text: "Detrazioni", value: results.deductions?.toFixed(2), symbol: "€" },
+		{ text: "Imposta Totale Netta", value: results.totalNetTax?.toFixed(2), symbol: "€" },
+		{ text: "Salario Netto Annuo", value: results.netYearlyIncome?.toFixed(2), symbol: "€" },
+		{ text: "Mensilità", value: results.months?.toFixed(0), symbol: "" },
 		{
-			minVal: 0,
-			maxVal: 28000,
-			percentage: 0.23,
+			text: "Salario Lordo Mensile",
+			value: results.grossMonthlyIncome?.toFixed(2),
+			symbol: "€",
 		},
-		{
-			minVal: 28000,
-			maxVal: 50000,
-			percentage: 0.35,
-		},
-		{
-			minVal: 50000,
-			maxVal: Number.MAX_SAFE_INTEGER,
-			percentage: 0.43,
-		},
-	];
-
-	const deductionEchelons: Echelon[] = [
-		{
-			minVal: 0,
-			maxVal: 28000,
-			percentage: 0.23,
-		},
-		{
-			minVal: 28000,
-			maxVal: 50000,
-			percentage: 0.35,
-		},
-		{
-			minVal: 50000,
-			maxVal: Number.MAX_SAFE_INTEGER,
-			percentage: 0.43,
-		},
-	];
-
-	const comunalEchelons: Echelon[] = [
-		{
-			minVal: 0,
-			maxVal: Number.MAX_SAFE_INTEGER,
-			percentage: 0.008,
-		},
-	];
-
-	const regionalEchelons: Echelon[] = [
-		{
-			minVal: 0,
-			maxVal: Number.MAX_SAFE_INTEGER,
-			percentage: 0.01,
-		},
+		{ text: "Salario Netto Mensile", value: results.netMonthlyIncome?.toFixed(2), symbol: "€" },
+		{ text: "Margine di Profitto", value: results.netMargin?.toFixed(2) || 0.0, symbol: "%" },
+		{ text: "Carico Fiscale", value: results.costRate?.toFixed(2) || 0.0, symbol: "%" },
 	];
 
 	function calcEchelonValue(gross: number, echelons: Echelon[]): number {
@@ -83,77 +46,88 @@ function NetSalary() {
 
 		echelons.forEach((element) => {
 			if (gross > element.minVal && gross <= element.maxVal) {
-				net += (gross - element.minVal) * element.percentage;
+				net += ((gross - element.minVal) * element.percentage) / 100;
 			} else if (gross > element.maxVal) {
-				net += (element.maxVal - element.minVal) * element.percentage;
+				net += ((element.maxVal - element.minVal) * element.percentage) / 100;
 			}
 		});
 
 		return net;
 	}
 
+	function calcDeductions(gross: number): number {
+		if (gross < 0) return 0;
+		else if (gross <= 15000) return 1955;
+		else if (gross <= 28000) return 1910 + (1190 * (28000 - gross)) / 13000;
+		else if (gross <= 50000) return 1910 * ((50000 - gross) / 22000);
+		else return 0;
+	}
+
 	function calcPension(gross: number): number {
 		return gross * 0.0919;
 	}
 
-	/* var regionData = {
-		Aosta: [1, 2, 3, 4, 5],
-		Piemonte: [1, 2, 3, 4, 5],
-		EmiliaRomagna: [1, 2, 3, 4, 5],
-		Campania: [1, 2, 3, 4, 5],
-		Basilicata: [1, 2, 3, 4, 5],
-		Sardegna: [1, 2, 3, 4, 5],
-	}; */
+	function findRegionalEchelons(code: string): Echelon[] {
+		const foundRegion = regionData.find((el) => el.code === code);
+		console.log(code, foundRegion);
+		if (!foundRegion) return [];
+		return foundRegion.echelons;
+	}
 
 	function calculate(event: React.MouseEvent<HTMLButtonElement>) {
 		// Return the results object with data to be shown on the page
 		event.preventDefault();
+
+		if (!data.region) {
+			setMsg("Select a region");
+			return;
+		}
+
+		setMsg("");
+
 		setShowResults(true);
 
 		// Input validation and data type control
-		var grossYearlyIncome = data.grossYearlyIncome || 0;
-		/* 		
-        var comunalTax = data.comunalTax || 0;
-		var regionalTax = data.regionalTax || 0; 
-        */
-		var months = data.paymentsPerYear;
-
-		var pension = calcPension(grossYearlyIncome);
-
-		var imposable = grossYearlyIncome - pension;
-
-		var grossTaxes =
-			calcEchelonValue(imposable, irpefEchelons) +
-			calcEchelonValue(imposable, regionalEchelons) +
-			calcEchelonValue(imposable, comunalEchelons);
-
-		var deduction = calcEchelonValue(grossYearlyIncome, deductionEchelons);
-
-		var netTaxes = Math.min(0, grossTaxes - deduction);
-
-		var netYearlyIncome = imposable - netTaxes;
-
-		var totalNetYearlyIncome = netYearlyIncome + Math.min(0, deduction);
-
-		var grossMonthlyIncome = grossYearlyIncome / months;
-		var netMonthlyIncome = totalNetYearlyIncome / months;
-
-		var netMargin = netYearlyIncome / grossYearlyIncome;
+		const grossYearlyIncome = data.grossYearlyIncome || 0;
+		const months = data.paymentsPerYear;
+		const pensionCost = calcPension(grossYearlyIncome);
+		const taxableIncome = grossYearlyIncome - pensionCost;
+		const regionalEchelons = findRegionalEchelons(data.region);
+		console.log(regionalEchelons);
+		const irpefTax = calcEchelonValue(taxableIncome, irpefEchelons);
+		const regionalTax = calcEchelonValue(taxableIncome, regionalEchelons);
+		const comunalTax = (taxableIncome * data.comunalTaxRate) / 100;
+		const totalGrossTax = irpefTax + regionalTax + comunalTax;
+		const deductions = calcDeductions(grossYearlyIncome);
+		const totalNetTax = Math.max(0, totalGrossTax - deductions);
+		const netYearlyIncome = taxableIncome - totalNetTax;
+		const grossMonthlyIncome = grossYearlyIncome / months;
+		const netMonthlyIncome = netYearlyIncome / months;
+		const netMargin = isNaN(netYearlyIncome / grossYearlyIncome)
+			? 0
+			: (netYearlyIncome / grossYearlyIncome) * 100;
+		const costRate = 100 - netMargin;
 
 		// Results object assignment
 
 		const result: SalaryResults = {
-			grossYearlyIncome: grossYearlyIncome,
-			pension: pension,
-			taxes: grossTaxes,
-			netYearlyIncome: netYearlyIncome,
-			grossMonthlyIncome: grossMonthlyIncome,
-			netMonthlyIncome: netMonthlyIncome,
-			deduction: deduction,
-			totalNetYearlyIncome: totalNetYearlyIncome,
-			netMargin: netMargin,
+			grossYearlyIncome,
+			pensionCost,
+			taxableIncome,
+			irpefTax,
+			regionalTax,
+			comunalTax,
+			totalGrossTax,
+			deductions,
+			totalNetTax,
+			netYearlyIncome,
+			months,
+			grossMonthlyIncome,
+			netMonthlyIncome,
+			netMargin,
+			costRate,
 		};
-		console.log(result, months);
+
 		setResults(result);
 
 		return;
@@ -161,10 +135,18 @@ function NetSalary() {
 
 	function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
 		event.target.value = sanitizeInput(event.target.value);
-		if (Number(event.target.value) < 0) event.target.value = "0";
+		console.log(event.target.name);
+		var value: number | string;
+		if (event.target.name !== "region") {
+			if (Number(event.target.value) < 0) event.target.value = "0";
+			value = Number(event.target.value);
+		} else {
+			value = event.target.value;
+		}
+
 		setData({
 			...data,
-			[event.target.name]: Number(event.target.value),
+			[event.target.name]: value,
 		});
 	}
 
@@ -179,42 +161,40 @@ function NetSalary() {
 				<form>
 					<Input
 						name="grossYearlyIncome"
-						label="RAL (Reddito Annuo Lordo"
+						label="RAL (Reddito Annuo Lordo)"
 						value={data.grossYearlyIncome || ""}
 						placeholder="es. 15000"
 						function={handleChange}
 						postLabel="€"
 						type="number"
 					/>
+					<label htmlFor={"region"}>
+						<div className="pre-label">Imposta Regionale</div>
+						<div className="input-container">
+							<select
+								value={data.region}
+								defaultValue=""
+								name="region"
+								onChange={handleChange}>
+								<option value="">-</option>
+								{regionData.map((reg) => (
+									<option value={reg.code} key={"region-" + reg.code}>
+										{reg.region}
+									</option>
+								))}
+							</select>{" "}
+							<div className="post-label">%</div>
+						</div>
+					</label>
 					<Input
-						name="regionalTax"
-						label="Imposta Regionale"
-						value={data.regionalTax || ""}
-						placeholder="es. 1"
-						function={handleChange}
-						postLabel="%"
-						type="number"
-					/>
-					<Input
-						name="comunalTax"
+						name="comunalTaxRate"
 						label="Imposta Comunale"
-						value={data.comunalTax || ""}
+						value={data.comunalTaxRate || ""}
 						placeholder="es. 1"
 						function={handleChange}
 						postLabel="%"
 						type="number"
 					/>
-					{/* <select
-            id="region"
-            name="region"
-            value={data.region}
-            onChange={handleChange}
-          >
-            <option value="Aosta">Valle d'Aosta</option>
-            <option value="Piemonte">Piemonte</option>
-            <option value="EmiliaRomagna">Emilia-Romagna</option>
-            <option value="Basilicata">Basilicata</option>
-          </select> */}
 					<label htmlFor="paymentsPerYear">
 						<p className="pre-label">Mensilità</p>
 						<select
@@ -233,28 +213,20 @@ function NetSalary() {
 					<button onClick={calculate}>Calcola</button>
 					<button onClick={reset}>Cancella</button>
 				</form>
-
+				{msg && <div>{msg}</div>}
 				<br />
 				{showResults && (
 					<>
-						<div className="NetSalaryChart"></div>
-						<div className="summary-table">
-							<div className="head">
-								<div>RAL</div>
-								<div>Netto Annuo + Detrazioni</div>
-								<div>Netto Mensile</div>
-								<div>Contributi INPS</div>
-								<div>IRPEF e Addizionali</div>
-								<div>Detrazioni Lavoro Dipendente</div>
-							</div>
-							<div className="body">
-								<div>{results.grossYearlyIncome} €</div>
-								<div>{results.totalNetYearlyIncome.toFixed(2)} €</div>
-								<div>{results.netMonthlyIncome.toFixed(2)} €</div>
-								<div>{results.pension.toFixed(2)} €</div>
-								<div>{results.taxes.toFixed(2)} €</div>
-								<div>{results.deduction.toFixed(2)} €</div>
-							</div>
+						<div className="net-salary-chart"></div>
+						<div className="net-salary-table">
+							{resultTableData.map((row) => (
+								<div className="pair">
+									<div className="head">{row.text}</div>
+									<div className="body">
+										{row.value} {row.symbol}
+									</div>
+								</div>
+							))}
 						</div>
 					</>
 				)}

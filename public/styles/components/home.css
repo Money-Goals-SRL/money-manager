@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 .home-title {
   text-align: center;
 }
@@ -8,14 +10,20 @@
   display: flex;
   flex-wrap: wrap-reverse;
 }
+
 .home-welcome {
-  background-color: rgb(255, 106, 0);
+  background-color: var(--primary-color);
   padding: 1em;
   text-align: justify;
   border-radius: 10px;
   width: 100%;
   color: white;
+  font-weight: bold;
 }
+.home-welcome strong {
+    font-size: large;
+}
+
 .home-menu {
   width: 100%;
 
@@ -23,11 +31,12 @@
   align-items: center;
   vertical-align: middle;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap
+  /* flex-direction: column; */
 }
 
 .home-link {
-  width: 100%;
+  width: 45%;
   transition: 0.4s;
   border-radius: 15px;
   display: block;
@@ -37,7 +46,7 @@
 }
 
 .home-link:hover {
-  background-color: rgb(255, 106, 0);
+  background-color: var(--hover-color);
   transition: 0.4s;
 }
 
@@ -63,7 +72,7 @@
   }
 }
 
-@media only screen and (min-width: 1024px) {
+/* @media only screen and (min-width: 1024px) {
   .home-menu {
     width: 40%;
   }
@@ -71,4 +80,4 @@
   .home-welcome {
     max-width: 350px;
   }
-}
+} */

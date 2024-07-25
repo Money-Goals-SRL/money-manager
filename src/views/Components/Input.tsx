@@ -9,7 +9,7 @@ type inputProps = {
 	type: string;
 	disabled?: boolean | undefined;
 	step?: string | number | undefined;
-	postLabel: string;
+	postLabel?: string;
 };
 function Input(props: inputProps) {
 	//   <Input
@@ -24,7 +24,7 @@ function Input(props: inputProps) {
 
 	return (
 		<label htmlFor={props.name}>
-			<p className="pre-label">{props.label}</p>
+			<div className="pre-label">{props.label}</div>
 			<div className="input-container">
 				<input
 					value={props.value}
@@ -36,7 +36,7 @@ function Input(props: inputProps) {
 					step={props.step}
 				/>
 
-				<p className="post-label">{props.postLabel}</p>
+				<div className="post-label">{props.postLabel}</div>
 			</div>
 		</label>
 	);
