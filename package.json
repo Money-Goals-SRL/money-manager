@@ -1,5 +1,5 @@
 {
-    "homepage": "https://money-goals-srl.github.io/money-manager",
+    "homepage": "https://money-goals-srl.github.io/money-manager/",
     "name": "money-manager",
     "version": "1.0.0",
     "private": true,
@@ -33,7 +33,7 @@
         "typescript": "latest"
     },
     "scripts": {
-        "prodDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=https://money-goals-srl.github.io/money-manager npm run deploy",
+        "prodDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=https://money-goals-srl.github.io/money-manager/ npm run deploy",
         "devDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=http://localhost:3000/ npm start",
         "predeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run build",
         "deploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider gh-pages -d build",

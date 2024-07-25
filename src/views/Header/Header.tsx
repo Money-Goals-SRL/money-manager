@@ -28,14 +28,14 @@ function Header() {
 
 	return (
 		<header>
-			<a href="/" className="logo-container" id="logo-container">
-				<img src="/images/favicon.png" alt="logo"></img>
+			<a href="./" className="logo-container" id="logo-container">
+				<img src="./images/favicon.png" alt="logo"></img>
 				<h2 id="name">MONEY MANAGER</h2>
 			</a>
 			<div className="header-navbar" id="header-navbar">
 				<div className="hamburger-div" id="hamburger-div">
 					<img
-						src="/images/hamburger-icon.png"
+						src="./images/hamburger-icon.png"
 						alt="hamburger-icon"
 						className="hamburger"
 						onClick={handleMenu}

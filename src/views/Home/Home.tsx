@@ -1,6 +1,7 @@
 import React from "react";
 
 function Home() {
+	console.log(process.env.PUBLIC_URL);
 	const linkData = [
 		{ href: "budget-50-30-20", text: "Budget 50/30/20" },
 		{ href: "saving-to-goal", text: "Tempo per Target" },
