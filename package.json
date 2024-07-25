@@ -33,10 +33,10 @@
         "typescript": "latest"
     },
     "scripts": {
-        "prodDeploy": "PUBLIC_URL=https://money-goals-srl.github.io/money-manager npm run deploy",
-        "devDeploy": "PUBLIC_URL=http://localhost:3000/ npm start",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "prodDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=https://money-goals-srl.github.io/money-manager npm run deploy",
+        "devDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=http://localhost:3000/ npm start",
+        "predeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run build",
+        "deploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider gh-pages -d build",
         "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
