@@ -1,6 +1,4 @@
-import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import Chart from "chart.js/auto";
+export default {}; /* import React, { type Context } from "react";
 
 function Budget503020Results(props) {
   const exp = props.expenses;
@@ -60,3 +58,4 @@ function Budget503020Results(props) {
 }
 
 export default Budget503020Results;
+ */

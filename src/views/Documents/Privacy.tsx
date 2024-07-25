@@ -9,13 +9,13 @@ function Privacy() {
       <p>
         Money Goals SRL a socio unico, società della quale il legale
         rappresentante è Leonardo Pinna, (di seguito Money Goals o Titolare)
-        rilascia all’Interessato o all’Utente e cioè alla persona alla quale i
+        rilascia all'Interessato o all'Utente e cioè alla persona alla quale i
         dati personali si riferiscono, le seguenti informazioni ai sensi
-        dell’art. 13 Regolamento UE n. 2016/679 del 27 aprile 2016 (di seguito
+        dell'art. 13 Regolamento UE n. 2016/679 del 27 aprile 2016 (di seguito
         GDPR), relativo alla protezione delle persone fisiche con riguardo al
         trattamento dei dati personali. La presente informativa ha lo scopo di
         descrivere le caratteristiche dei trattamenti svolti in relazione ai
-        dati personali forniti dall’Interessato e le misure adottate al fine di
+        dati personali forniti dall'Interessato e le misure adottate al fine di
         tutelarne i diritti. La presente informativa viene rilasciata nel sito
         Money Manager (https://money-goals-srl.github.io/money-manager, di
         seguito il Sito), nella sezione dedicata alla politica sulla privacy
@@ -32,7 +32,7 @@ function Privacy() {
       </h4>
       <h4>Dati oggetto di trattamento</h4>
       <p>
-        Il Titolare NON raccoglie dati sull’Utente in questo sito. Potrebbero
+        Il Titolare NON raccoglie dati sull'Utente in questo sito. Potrebbero
         essere presenti link affiliati a terze parti, i quali prevedono un
         tracciamento NON su questo sito, ma sul sito della terza parte alla
         quale il link rimanda. Per ulteriori informazioni, potete inviare una
@@ -49,13 +49,13 @@ function Privacy() {
       </h4>
       <h4>Cookies utilizzati</h4>
       <p>
-        NON sono presenti cookies o strumenti di tracciamento all’interno del
+        NON sono presenti cookies o strumenti di tracciamento all'interno del
         sito web.
       </p>
       <h4>Come è possibile che non abbiate cookies nel sito?</h4>
       <p>
         Il sito Money Manager non utilizza cookies perchè non necessita di alcun
-        tipo di dati per l’utilizzo del sito. Il sito è totalmente sviluppato da
+        tipo di dati per l'utilizzo del sito. Il sito è totalmente sviluppato da
         noi, e abbiamo il controllo completo dello sviluppo.
       </p>
       <p className="document-version">Versione 01 del 28 marzo 2023</p>
