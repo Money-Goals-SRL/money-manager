@@ -2,14 +2,14 @@ import React from "react";
 
 function Home() {
 	const linkData = [
-		{ href: "/budget-50-30-20", text: "Budget 50/30/20" },
-		{ href: "/saving-to-goal", text: "Tempo per Target" },
-		{ href: "/irr", text: "Internal Rate of Return" },
-		{ href: "/compound-interest", text: "Interesse Composto" },
-		{ href: "/mortgage", text: "Simulatore Mutuo" },
-		{ href: "/net-salary", text: "Calcola Stipendio Netto" },
-		{ href: "/rental", text: "Rendimento da Affitto" },
-		{ href: "/conversion/length", text: "Convertitore Lunghezza" },
+		{ href: "budget-50-30-20", text: "Budget 50/30/20" },
+		{ href: "saving-to-goal", text: "Tempo per Target" },
+		{ href: "irr", text: "Internal Rate of Return" },
+		{ href: "compound-interest", text: "Interesse Composto" },
+		{ href: "mortgage", text: "Simulatore Mutuo" },
+		{ href: "net-salary", text: "Calcola Stipendio Netto" },
+		{ href: "rental", text: "Rendimento da Affitto" },
+		{ href: "conversion/length", text: "Convertitore Lunghezza" },
 	];
 	return (
 		<>
