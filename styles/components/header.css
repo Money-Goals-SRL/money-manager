@@ -1,5 +1,7 @@
+@import "./variables.css";
+
 header {
-  background-color: rgb(255, 106, 0);
+  background-color: var(--primary-color);
   color: white;
   padding: 0 1em;
   display: flex;
@@ -30,14 +32,14 @@ navbar-element: single navbar element that contains a link;
 
 .navbar-element {
   background-color: white;
-  color: rgb(255, 106, 0);
+  color: var(--primary-color);
   font-weight: bold;
   border-radius: 10px;
   justify-content: center;
   transition: 0.3s;
 }
 .navbar-element:hover {
-  background-color: rgb(221, 101, 16);
+  background-color: var(--hover-color);
   color: white;
 }
 @media only screen and (min-width: 1024px) {
