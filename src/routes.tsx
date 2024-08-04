@@ -6,7 +6,7 @@ import Budget503020 from "./views/Budget503020/Budget503020";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
 import SavingToGoal from "./views/SavingToGoal/SavingToGoal";
-import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
+// import InternalRateReturn from "./views/InternalRateReturn/InternalRateReturn";
 import NotFound from "./views/NotFound/NotFound";
 import CompoundInterest from "./views/CompoundInterest/CompoundInterest";
 import Mortgage from "./views/Mortgage/Mortgage";
@@ -19,14 +19,14 @@ import Disclaimer from "./views/Documents/Disclaimer";
 import ConversionLength from "./views/Conversion/Length/Conversion";
 
 // Per usare il client-side routing su GitHub, questa riga è necessaria perchè fornisce il basename di partenza del router.
-const routerBaseName = process.env.PUBLIC_URL;
+// const routerBaseName = process.env.PUBLIC_URL;
 
 const routes: RouteObject[] = [
 	{ path: "/", element: <App body={<Home />} />, index: true },
 	{ path: "profile", element: <App body={<Profile />} /> },
 	{ path: "budget-50-30-20", element: <App body={<Budget503020 />} /> },
 	{ path: "saving-to-goal", element: <App body={<SavingToGoal />} /> },
-	{ path: "irr", element: <App body={<InternalRateReturn />} /> },
+	// { path: "irr", element: <App body={<InternalRateReturn />} /> },
 	{ path: "compound-interest", element: <App body={<CompoundInterest />} /> },
 	{ path: "mortgage", element: <App body={<Mortgage />} /> },
 	{ path: "net-salary", element: <App body={<NetSalary />} /> },
@@ -52,6 +52,6 @@ const routes: RouteObject[] = [
 	},
 	{ path: "*", element: <App body={<NotFound />} /> },
 ];
-const router = createBrowserRouter(routes, { basename: routerBaseName });
+const router = createBrowserRouter(routes, { basename: "/" });
 
 export default router;

@@ -9,13 +9,13 @@ function Footer() {
 			<Sponsor />
 			<footer>
 				<div className="footer-navbar">
-					<a href="disclaimer" className="footer-link">
+					<a href="/disclaimer" className="footer-link">
 						Disclaimer
 					</a>
-					<a href="privacy" className="footer-link">
+					<a href="/privacy" className="footer-link">
 						Privacy e Cookies
 					</a>
-					<a href="terms-and-conditions" className="footer-link">
+					<a href="/terms-and-conditions" className="footer-link">
 						Termini e Condizioni
 					</a>
 				</div>

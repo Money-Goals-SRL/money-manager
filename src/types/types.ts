@@ -89,7 +89,26 @@ export type SalaryData = {
 	paymentsPerYear: number;
 	region: string;
 	comunalTaxRate: number;
+	dailyFoodRefund: number;
+	dailyTravelRefund: number;
+	workDaysPerYear: number;
+	smartWorking: number;
+	contract: Contract;
+	alwaysIncludeFood: boolean;
+	alwaysIncludeTravel: boolean;
 };
+
+export enum Contract {
+	Indeterminato = "Indeterminato",
+	Determinato = "Determinato",
+	Apprendistato = "Apprendistato",
+}
+
+export enum Frequency {
+	Daily = 365,
+	Monthly = 12,
+	Yearly = 1,
+}
 
 export type SalaryResults = {
 	grossYearlyIncome: number;
@@ -101,12 +120,17 @@ export type SalaryResults = {
 	totalGrossTax: number;
 	deductions: number;
 	totalNetTax: number;
+	foodRefunds: number;
+	travelRefunds: number;
 	netYearlyIncome: number;
+	netYearlyIncomeIncludingBonuses: number;
 	months: number;
 	grossMonthlyIncome: number;
 	netMonthlyIncome: number;
+	netMonthlyIncomeIncludingBonuses: number;
 	netMargin: number;
 	costRate: number;
+	netMarginIncludingBonuses: number;
 };
 
 export type ConversionLengthData = {

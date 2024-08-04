@@ -35,8 +35,6 @@ function Input(props: inputProps) {
 					disabled={props.disabled}
 					step={props.step}
 				/>
-
-				<div className="post-label">{props.postLabel}</div>
 			</div>
 		</label>
 	);

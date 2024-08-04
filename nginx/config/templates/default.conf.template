@@ -1,0 +1,43 @@
+
+# include mime.types;
+
+# Define a rate limiting zone for general requests
+limit_req_zone $binary_remote_addr zone=reqlimit:10m rate=10r/s;
+
+# Define a separate rate limiting zone for login attempts
+limit_req_zone $binary_remote_addr zone=reqlimit_login:10m rate=5r/s;
+
+# This line gives to nginx the Docker's DNS Resolver address!
+resolver 127.0.0.11 ipv6=off valid=10s;
+
+server {
+    listen ${NGINX_PORT};
+    server_name ${NGINX_DOMAIN}
+    # server_name http://localhost;
+    # return 301 https://$host$request_uri;
+}
+
+# server {
+#     listen ${NGINX_PORT} ssl;
+#     server_name ${NGINX_DOMAIN};
+# 
+#     keepalive_timeout   70;
+# 
+#     ssl_certificate     /etc/ssl/certs/moneygoalssrl.crt;
+#     ssl_certificate_key /etc/ssl/certs/moneygoalssrl.key;
+#     ssl_session_cache   shared:SSL:10m;
+#     ssl_session_timeout 10m;
+#     ssl_protocols       TLSv1.2 TLSv1.3;
+#     ssl_ciphers         HIGH:!aNULL:!MD5;
+# 
+# 
+#     location / {
+# 
+#         limit_req zone=reqlimit_login burst=10 nodelay;
+#         limit_req_status 429;
+# 
+#         root /usr/share/nginx/html;  # Adjust the path to your build directory
+#         index index.html index.htm;  # Specify the default index files
+#         try_files $uri /index.html;
+#     }
+# }

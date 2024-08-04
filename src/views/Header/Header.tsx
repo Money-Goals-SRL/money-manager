@@ -28,24 +28,24 @@ function Header() {
 
 	return (
 		<header>
-			<a href="" className="logo-container" id="logo-container">
-				<img src="images/favicon.png" alt="logo"></img>
+			<a href="/" className="logo-container" id="logo-container">
+				<img src="/images/favicon.png" alt="logo"></img>
 				<h2 id="name">MONEY MANAGER</h2>
 			</a>
 			<div className="header-navbar" id="header-navbar">
 				<div className="hamburger-div" id="hamburger-div">
 					<img
-						src="images/hamburger-icon.png"
+						src="/images/hamburger-icon.png"
 						alt="hamburger-icon"
 						className="hamburger"
 						onClick={handleMenu}
 					/>
 				</div>
 				<div className="navbar-menu" id="navbar-menu">
-					<a className="navbar-element" href="">
+					<a className="navbar-element" href="/">
 						Home
 					</a>
-					<a className="navbar-element" href="terms-and-conditions">
+					<a className="navbar-element" href="/terms-and-conditions">
 						T&Cs
 					</a>
 				</div>

@@ -1,194 +1,298 @@
 @import "./components/variables.css";
 
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  text-align: justify;
-  background-color: #c8d6d8;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	text-align: justify;
+	background-color: #c8d6d8;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 label {
-  display: block;
-  align-items: center;
-  flex-wrap: wrap;
+	display: block;
+	align-items: center;
+	flex-wrap: wrap;
 }
 .inputs-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 .inputs-block {
-  border: 1px solid black;
-  margin: 0.5em;
-  padding: 0.5em;
-  width: 450px;
+	border: 1px solid black;
+	margin: 0.5em;
+	padding: 0.5em;
+	width: 450px;
 }
-.pre-label,
-input,
-select {
-  width: 250px;
-}
+/* .pre-label {
+	width: 250px;
+} */
+
 .pre-label {
-  margin: 0.5em 0;
-  font-weight: bold;
-  color: #333;
-  box-sizing: border-box;
+	margin: 0.5em 0;
+	font-weight: bold;
+	color: #333;
+	box-sizing: border-box;
 }
 .input-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
 }
 .inputs-container h4 {
-  text-align: center;
+	text-align: center;
 }
+
+.input-container-checkbox {
+}
+
 .irr-movement {
-  display: flex;
+	display: flex;
 }
 input,
 select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	box-sizing: border-box;
 }
 
 input:focus {
-  border: 1px solid #000;
-  outline: none;
+	border: 1px solid #000;
+	outline: none;
 }
 .post-label {
-  margin: auto 0.5em;
+	margin: auto 0.5em;
 }
 button {
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: var(--hover-color);
+	background-color: var(--hover-color);
 }
 
 button,
 label {
-  margin: 0.5em;
+	margin: 0.5em auto;
 }
 .summary-table {
-  display: flex;
-  flex-direction: column;
-  margin: 1em auto;
-  text-align: center;
-  font-size: 1em;
-  overflow-x: scroll;
+	display: flex;
+	flex-direction: column;
+	margin: 1em auto;
+	text-align: center;
+	font-size: 1em;
+	overflow-x: scroll;
 }
 .summary-table .head,
 .summary-table .body {
-  display: flex;
-  flex-direction: row;
-  font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
 }
 .summary-table .head div,
 .summary-table .body div {
-  width: calc(100% / 5);
-  min-width: 150px;
-  margin: 0;
-  padding: 0.5em;
-  border: 1px solid black;
+	width: calc(100% / 5);
+	min-width: 150px;
+	margin: 0;
+	padding: 0.5em;
+	border: 1px solid black;
 }
 
 .summary-table .head div {
-  background-color:var(--primary-color);
-  color: white;
+	background-color: var(--primary-color);
+	color: white;
 }
 .error-message {
-  color: red;
+	color: red;
 }
 .page-body {
-  padding: 1em;
+	padding: 1em;
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .page-body {
-    padding: 2em;
-  }
+	.page-body {
+		padding: 2em;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
-  .page-body {
-    padding: 2em;
-  }
+	.page-body {
+		padding: 2em;
+	}
 }
 h1 {
-  text-align: center;
+	text-align: center;
 }
 h3 {
-  color: black;
-  margin: 0;
+	color: black;
+	margin: 0;
 }
 
 .chart {
-  width: 50%;
-  height: 400px;
+	width: 50%;
+	height: 400px;
 }
 
 a {
-  margin: 1em;
-  color: white;
-  text-decoration: none;
+	margin: 1em;
+	color: white;
+	text-decoration: none;
 }
 
 .pdf-view {
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
+	height: 100vh;
+	width: 100vw;
+	overflow: auto;
 }
 .document-version {
-  font-style: italic;
-  font-size: small;
+	font-style: italic;
+	font-size: small;
 }
 
+.net-salary-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.net-salary-container > * {
+	padding: 1em 0;
+}
+
+.net-salary-input-container {
+	width: 30%;
+	min-width: 200px;
+}
 
 .net-salary-table {
-    display: flex;
-    flex-direction: column;
-    margin: 1em auto;
-    text-align: center;
-    font-size: 1em;
-    overflow-x: scroll;
-  }
-  .net-salary-table .pair {
-    display: flex;
-    flex-direction: row;
-  }
-  .net-salary-table .head,
-  .net-salary-table .body {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-  }
-  .net-salary-table .head,
-  .net-salary-table .body {
-    width: calc(100% / 5);
-    min-width: 150px;
-    margin: 0;
-    padding: 0.5em;
-    border: 1px solid black;
-  }
+	display: flex;
+	flex-direction: column;
+	margin: 1em auto;
+	text-align: center;
+	font-size: 1em;
+	width: 50%;
+	/* overflow-x: scroll; */
+}
 
-  
-  .net-salary-table .head {
-    background-color: var(--primary-color);
-    color: white;
-  }
+/* .net-salary-table * {
+	height: 3em;
+	display: flex;
+} */
+
+@media only screen and (max-width: 972px) {
+	.net-salary-container {
+		flex-direction: column;
+	}
+
+	.net-salary-input-container,
+	.net-salary-input-container label,
+	.net-salary-input-container input,
+	.net-salary-table {
+		width: 100%;
+		margin: auto;
+	}
+
+	.net-salary-container > * {
+		margin: 0.5em auto 0;
+	}
+}
+
+.net-salary-input-container > * {
+	width: 100%;
+	margin: 0.3em auto 0;
+}
+
+.net-salary-input-container select,
+.net-salary-input-container input,
+.net-salary-input-container button {
+	width: 100%;
+	margin: 0.3em auto 0;
+}
+
+.net-salary-table .pair {
+	display: flex;
+	flex-direction: row;
+	height: 3em;
+}
+
+.net-salary-table .head,
+.net-salary-table .body {
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	width: 100%;
+	min-width: 150px;
+	margin: 0;
+	padding: 0.5em;
+	border: 1px solid black;
+	justify-content: center;
+}
+
+.net-salary-table .body {
+	background-color: #ffffff;
+}
+
+.net-salary-table .head {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+.net-salary-disclaimer {
+	font-size: small;
+	font-weight: 600;
+	padding: 1em;
+}
+
+.net-salary-details {
+	width: 100%;
+}
+
+.net-salary-details-title {
+	font-weight: 600;
+}
+
+.salary-input-checkbox {
+	display: flex;
+	margin: 0;
+	height: 0.5em;
+}
+
+.net-salary-details-item {
+	padding: 1em;
+}
+
+.net-salary-table-radio.head {
+	display: flex;
+	flex-direction: row;
+}
+
+.net-salary-table-radio {
+	width: 40%;
+	display: flex;
+	flex-direction: row;
+	margin: 0;
+}
+
+.table-head {
+	background-color: #0f92a3;
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	width: 100%;
+	border: 1px solid black;
+	justify-content: center;
+	color: white;
+	align-items: center;
+}

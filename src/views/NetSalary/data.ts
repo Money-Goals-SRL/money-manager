@@ -29,30 +29,6 @@ export const irpefEchelons: Echelon[] = [
 	},
 ];
 
-export const deductionEchelons: Echelon[] = [
-	{
-        constant: 1955,
-		minVal: 0,
-		maxVal: 15000,
-		percentage: 23,
-	},
-	{
-        constant: 1910,
-		minVal: 15000,
-		maxVal: 28000,
-		percentage: 35,
-	},	{
-		minVal: 28000,
-		maxVal: 50000,
-		percentage: 35,
-	},
-	{
-		minVal: 50000,
-		maxVal: Number.MAX_SAFE_INTEGER,
-		percentage: 0,
-	},
-];
-
 export const comunalEchelons: Echelon[] = [
 	{
 		minVal: 0,
@@ -461,3 +437,8 @@ export const regionData: RegionalTax[] = [
 ];
 
 export default regionData;
+
+export const MIN_DETRACTION_DETERMINATO = 1380;
+export const MIN_DETRACTION_INDETERMINATO = 690;
+export const PENSION_RATE_NORMAL = 9.19; // %
+export const PENSION_RATE_APPRENTICESHIP = 9.19 * 0.5 - 7; // %

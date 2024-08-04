@@ -1,7 +1,6 @@
 import React from "react";
 
 function Home() {
-	console.log(process.env.PUBLIC_URL);
 	const linkData = [
 		{ href: "budget-50-30-20", text: "Budget 50/30/20" },
 		{ href: "saving-to-goal", text: "Tempo per Target" },
@@ -20,7 +19,7 @@ function Home() {
 			<div className="home-body">
 				<div className="home-menu">
 					{linkData.map((data) => (
-						<a href={data.href} className="home-link">
+						<a href={data.href} key={"home-" + data.href} className="home-link">
 							<h3>{data.text}</h3>
 						</a>
 					))}

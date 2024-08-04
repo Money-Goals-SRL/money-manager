@@ -1,0 +1,35 @@
+services:
+    cloudflared:
+        image: cloudflare/cloudflared:latest
+        command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+        restart: unless-stopped
+        networks:
+            - tunnel_network
+    proxy:
+        container_name: moneymanager
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+        environment:
+            - NGINX_DOMAIN=${SERVER_DOMAIN}
+            - NGINX_PORT=${PROXY_PORT}
+            # - NGINX_SSL_PASSWORD = ${SSL_PASSWORD}
+        #ports:
+        #  - ${PROXY_PORT}:${PROXY_PORT} # to be removed with cloudflared tunnel
+        #  - 80:80
+        networks:
+            - net
+            - tunnel_network
+        volumes:
+            - ./nginx/config/templates:/etc/nginx/templates
+            - ./downloads:/app/downloads:ro
+
+            - ./nginx/certs:/etc/ssl/certs
+
+        restart: unless-stopped
+
+networks:
+    net:
+        driver: bridge
+    tunnel_network:
+        driver: bridge

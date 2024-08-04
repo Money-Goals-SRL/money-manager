@@ -33,7 +33,7 @@ export default function ConversionLength(): JSX.Element {
 		{ name: "inches", symbol: "in", factor: 39.3701 },
 		{ name: "feets", symbol: "ft", factor: 3.28084 },
 		{ name: "yards", symbol: "yd", factor: 1.09361 },
-		{ name: "miles", symbol: "mi", factor: 1609.344 },
+		{ name: "miles", symbol: "mi", factor: 0.000621371 },
 	];
 
 	function convert(value: number, unitFrom: string, unitTo: string): number {

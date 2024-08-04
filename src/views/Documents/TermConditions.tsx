@@ -2,7 +2,7 @@ import React from "react";
 
 function TermConditions() {
 	return (
-		<>
+		<div>
 			<h3>TERMINI E CONDIZIONI DI UTILIZZO DEL SITO</h3>
 			<p>
 				Di seguito sono descritti i termini e le condizioni alle quali Money Goals SRL a
@@ -155,7 +155,7 @@ function TermConditions() {
 				(https://money-goals-srl.github.io/money-manager).
 			</p>
 			<p className="document-version">Versione 01 del 28 marzo 2023</p>
-		</>
+		</div>
 	);
 }
 

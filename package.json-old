@@ -1,4 +1,5 @@
 {
+	"homepage": "https://money-goals-srl.github.io/money-manager/",
 	"name": "money-manager",
 	"version": "1.0.0",
 	"private": true,
@@ -26,12 +27,17 @@
 		"@types/react-router-dom": "latest",
 		"@types/node": "latest",
 		"@types/d3": "latest",
+		"concurrently": "latest",
+		"gh-pages": "latest",
 		"nodemon": "latest",
 		"typescript": "latest"
 	},
 	"scripts": {
+		"prodDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=https://money-goals-srl.github.io/money-manager npm run deploy",
+		"devDeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider PUBLIC_URL=http://localhost:3000 npm start",
 		"predeploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run build",
-		"start": "npm install && cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+		"deploy": "cross-env NODE_OPTIONS=--openssl-legacy-provider gh-pages -d build",
+		"start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
 		"startLocal": "npm install && react-scripts start --watch --watch-poll",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
